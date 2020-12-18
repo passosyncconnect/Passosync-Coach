@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "538141149503",
+    "firebase_url": "https://pasosync-coach-2be77.firebaseio.com",
+    "project_id": "pasosync-coach-2be77",
+    "storage_bucket": "pasosync-coach-2be77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538141149503:android:1625ee17bd364104c92b8a",
+        "android_client_info": {
+          "package_name": "com.pasosync.pasosynccoach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538141149503-one1qvsmdb23rk3rlnilrtn5meedhtuq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFoACt_oM6yS35lgnHKu7TEKModHabcU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538141149503-one1qvsmdb23rk3rlnilrtn5meedhtuq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Passosync Coach</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="webclient_id">538141149503-one1qvsmdb23rk3rlnilrtn5meedhtuq.apps.googleusercontent.com</string>
+    <string name="help_title">Having an issue? We are here to help you in any case.</string>
+    <string name="help_writeEmail"><u>Click here to Write an Email to us.</u></string>
+    <string name="termsandcondition"><u>Terms and Condition</u></string>
+    <string name="register"><u>Click here to Register</u></string>
+    <string name="login"><u>Click here to Login</u></string>
+    <string name="subs_name"><b>Name: </b></string>
+    <string name="subs_email"><b>Email: </b></string>
+    <string name="subs_mobile"><b>Mobile: </b></string>
+    <string name="subs_age"><b>Age: </b></string>
+    <string-array name="search">
+
+        <item>Batting</item>
+        <item>Bowling</item>
+        <item>Fielding</item>
+        <item>Captaincy</item>
+        <item>Net Preparation</item>
+        <item>Match Preparation</item>
+        <item>Strength and Conditioning</item>
+        <item>Mental Skills</item>
+    </string-array>
+    <string-array name="type">
+        <item>Free</item>
+        <item>Paid</item>
+
+    </string-array>
+    <string name="see_more">see more</string>
+    <string name="message">Write the message here</string>
+    <string name="emailForHelp">pasosync@pasosync.com</string>
+    <string name="about_profile">Ravishankar Shastri (born 27 May 1962) is an Indian cricket coach, former commentator, cricketer and current head coach of the Indian national cricket team. As a player, he played for the India national cricket team between 1981 and 1992 in both Tests and ODIs. Although he started his career as a left arm spin bowler, he later transformed into a batting all-rounder.</string>
+    <string name="about_user">Hii there I am 24 years old batsman played for my local team in rajnagar ghaziabad and dsjdsvbjbdsbjvjbsvdbjvdbj</string>
+</resources>

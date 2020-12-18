@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/control_nav"
+    app:startDestination="@id/profileFragment2">
+
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment2_to_earningsFragment2"
+            app:destination="@id/earningsFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_updateProfileFragment2"
+            app:destination="@id/updateProfileFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_self"
+            app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_helpFragment3"
+            app:destination="@id/helpFragment3" />
+        <action
+            android:id="@+id/action_profileFragment2_to_notificationFragment2"
+            app:destination="@id/notificationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/earningsFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.EarningsFragment"
+        android:label="EarningsFragment" >
+        <action
+            android:id="@+id/action_earningsFragment2_to_helpFragment3"
+            app:destination="@id/helpFragment3" />
+        <action
+            android:id="@+id/action_earningsFragment2_to_notificationFragment2"
+            app:destination="@id/notificationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProfileFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UpdateProfileFragment"
+        android:label="UpdateProfileFragment" >
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_helpFragment3"
+            app:destination="@id/helpFragment3" />
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_notificationFragment2"
+            app:destination="@id/notificationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment3"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.HelpFragment"
+        android:label="HelpFragment" >
+        <action
+            android:id="@+id/action_helpFragment3_to_notificationFragment2"
+            app:destination="@id/notificationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.NotificationFragment"
+        android:label="NotificationFragment" >
+        <action
+            android:id="@+id/action_notificationFragment2_to_helpFragment3"
+            app:destination="@id/helpFragment3" />
+    </fragment>
+</navigation>

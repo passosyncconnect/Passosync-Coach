@@ -1,0 +1,2 @@
+rootProject.name='Pasosync Coach'
+include ':app'

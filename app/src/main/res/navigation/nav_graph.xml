@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/draftFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.DarftFragment"
+        android:label="DarftFragment" >
+        <action
+            android:id="@+id/action_draftFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_draftFragment_to_lectureListFragment"
+            app:destination="@id/lectureListFragment" />
+        <action
+            android:id="@+id/action_draftFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_draftFragment_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_draftFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.HelpFragment"
+        android:label="HelpFragment" >
+        <action
+            android:id="@+id/action_helpFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_helpFragment_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_helpFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectureListFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.LectureListFragment"
+        android:label="LectureListFragment" >
+        <action
+            android:id="@+id/action_lectureListFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_lectureListFragment_to_draftFragment"
+            app:destination="@id/draftFragment" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_lectureContent"
+            app:destination="@id/lectureContent" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_helpFragment2"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_lectureListFragment_to_helpFragment3"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.NewPostFragment"
+        android:label="NewPostFragment" >
+        <action
+            android:id="@+id/action_newPostFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_newPostFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_newPostFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_newPostFragment_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_newPostFragment_to_draftFragment"
+            app:destination="@id/draftFragment" />
+        <argument
+            android:name="draft"
+            app:argType="com.pasosync.pasosynccoach.data.DraftLectureDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.NotificationFragment"
+        android:label="NotificationFragment" >
+        <action
+            android:id="@+id/action_notificationFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_notificationFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.DashBoardFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_dashBoardFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_dashBoardFragment_to_lectureListFragment"
+            app:destination="@id/lectureListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_dashBoardFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_lectureContent"
+            app:destination="@id/lectureContent" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_freeSubscribersFragment"
+            app:destination="@id/freeSubscribersFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_paidSubscribersFragment"
+            app:destination="@id/paidSubscribersFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscribersFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.SubscribersFragment"
+        android:label="SubscribersFragment" >
+        <action
+            android:id="@+id/action_subscribersFragment2_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_subscribersFragment2_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/controlFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.ControlFragment"
+        android:label="ControlFragment" >
+        <action
+            android:id="@+id/action_controlFragment2_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectureContent"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.LectureContent"
+        android:label="LectureContent" >
+        <action
+            android:id="@+id/action_lectureContent_to_lectureListFragment"
+            app:destination="@id/lectureListFragment" />
+        <argument
+            android:name="lecture"
+            app:argType="com.pasosync.pasosynccoach.data.NewLectureDetails" />
+        <action
+            android:id="@+id/action_lectureContent_to_pdfFragment"
+            app:destination="@id/pdfFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.PdfFragment"
+        android:label="PdfFragment" >
+        <action
+            android:id="@+id/action_pdfFragment_to_lectureContent"
+            app:destination="@id/lectureContent" />
+    </fragment>
+    <fragment
+        android:id="@+id/freeSubscribersFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.FreeSubscribersFragment"
+        android:label="FreeSubscribersFragment" >
+        <action
+            android:id="@+id/action_freeSubscribersFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paidSubscribersFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.PaidSubscribersFragment"
+        android:label="PaidSubscribersFragment" >
+        <action
+            android:id="@+id/action_paidSubscribersFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.ArticleFragment"
+        android:label="ArticleFragment" >
+        <argument
+            android:name="article"
+            app:argType="com.pasosync.pasosynccoach.models.Article" />
+    </fragment>
+</navigation>
