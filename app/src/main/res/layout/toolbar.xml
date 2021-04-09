@@ -3,29 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="55dp"
-    android:id="@+id/toolbarCustom"
     android:background="#fff"
-    android:elevation="20dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="4dp"
     style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileIvimage"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/img_avatar"
-            android:layout_alignParentEnd="true"
-            />
-
-
-
-    </RelativeLayout>
 
 </androidx.appcompat.widget.Toolbar>

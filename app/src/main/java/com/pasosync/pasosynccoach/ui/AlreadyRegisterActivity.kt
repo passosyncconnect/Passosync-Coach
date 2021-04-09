@@ -28,7 +28,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class AlreadyRegisterActivity : AppCompatActivity() {
-
+    private val TAG = "AlreadyRegisterActivity"
     lateinit var auth: FirebaseAuth
     lateinit var mAuthListener: FirebaseAuth.AuthStateListener
     lateinit var builder: AlertDialog.Builder
@@ -99,7 +99,7 @@ class AlreadyRegisterActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Recover Password")
         var linearLayout = LinearLayout(this)
-        builder.setIcon(R.mipmap.coachiconround)
+        builder.setIcon(R.mipmap.ic_add_person_round)
         builder.setMessage("You will get an email with a link to reset password")
        var layoutParams =ViewGroup.LayoutParams.MATCH_PARENT
 

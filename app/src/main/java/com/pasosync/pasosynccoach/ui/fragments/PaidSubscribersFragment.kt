@@ -23,7 +23,7 @@ import com.pasosync.pasosynccoach.databinding.FragmentPaidSubscribersBinding
 
 class PaidSubscribersFragment:Fragment(R.layout.fragment_paid_subscribers) {
     private lateinit var binding: FragmentPaidSubscribersBinding
-
+        private  val TAG = "PaidSubscribersFragment"
     private val user = FirebaseAuth.getInstance().currentUser
     private val db = FirebaseFirestore.getInstance()
     var userList = arrayListOf<UserDetails>()
@@ -68,24 +68,24 @@ class PaidSubscribersFragment:Fragment(R.layout.fragment_paid_subscribers) {
             dialog.show()
             userList.clear()
             val freelectureRef = db.collection("CoachLectureList")
-                .document(user?.uid!!).collection("subscribedUserDetails")
+                .document(user?.email.toString()).collection("subscribedUserDetails")
                 .get().addOnSuccessListener {
                     for (document in it.documents) {
                         dialog.dismiss()
                         val userDetails = UserDetails(
-                            document.getString("userName")!!,
-                            document.getString("userEmail")!!,
-                            document.getString("userMobile")!!,
-                            document.getString("userAge")!!,
-                            document.getString("userPicUri")!!
+                            document.getString("userName"),
+                            document.getString("userEmail"),
+                            document.getString("userMobile"),
+                            document.getString("userAge"),
+                            document.getString("userPicUri")
                         )
                         userList.add(userDetails)
-
+                        Log.d(TAG, "showData: ${userList.size}")
                         val count: HashMap<String, Any> = HashMap()
                         count[KEY_TITLE] = userList.size
                         val countRef =
                             db.collection("CoachSubscriberCount")
-                                .document(user?.uid!!)
+                                .document(user?.email.toString())
                                 .set(count)
                     }
                     subscribedAdapter = SubscribedAdapter(userList)

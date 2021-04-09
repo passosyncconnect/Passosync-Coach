@@ -1,103 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dashboard_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        >
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/dashboard_Academy_cardView"
+        android:background="@drawable/bgcoach"
+       >
+        <ProgressBar
+            android:id="@+id/paginationProgressBar"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/newsSlider_dashboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/newsSlider_dashboard" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/newsSlider_dashboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+android:scrollbars="horizontal"
+            android:scrollbarSize="6dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-           android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-           app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@id/dashboard_subscriber_cardView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginBottom="10dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ivDashboardAcademy"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_margin="8dp"
-                    android:padding="4dp"
-                    android:src="@drawable/community"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/tvHeadingAcademy"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/aldrich"
-                    android:text="See your Academy Members"
-                    android:textAlignment="viewStart"
-                    android:textColor="#4E4E4E"
-                    android:textSize="14sp"
-
-                    app:layout_constraintStart_toEndOf="@id/ivDashboardAcademy"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ivDashboardAcademyArrow"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/academarrow"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-
-
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/dashboard_student_cardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
             android:layout_marginEnd="51dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="#fff"
             app:cardCornerRadius="16dp"
+            android:clickable="true"
             app:cardElevation="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toStartOf="@+id/dashboard_subscriber_cardView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_Academy_cardView"
+            app:layout_constraintStart_toStartOf="@id/dashboard_constraint"
+            app:layout_constraintTop_toBottomOf="@id/newsSlider_dashboard"
             app:layout_goneMarginBottom="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -109,114 +62,40 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent">
 
-
                 <TextView
-                    android:id="@+id/headingPlayers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/aldrich"
-                    android:text="Players"
+                    android:id="@+id/tvTotalstudent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_margin="8dp"
+                    android:padding="2dp"
+                    android:text="Free
+                    Subscribers"
                     android:textAlignment="center"
-                    android:textColor="#4E4E4E"
+                    android:textColor="@color/orange"
                     android:textSize="20sp"
+
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/tvTotal_number_of_student"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/viewHeading"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="#E9E8E8E8"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/headingPlayers" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutFollowerCounter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewHeading">
-
-                    <TextView
-                        android:id="@+id/tvTotal_number_of_student"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="4dp"
-
-                        android:text="0"
-
-                        android:textColor="@color/dark_orange"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-
-                        />
-
-                    <TextView
-                        android:id="@+id/tvTotalstudent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:padding="2dp"
-                        android:text="Followers"
-                        android:textAlignment="center"
-                        android:textColor="@color/orange"
-                        android:textSize="12sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutSubscriberCounter"
+                <TextView
+                    android:id="@+id/tvTotal_number_of_student"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical"
+                    android:layout_height="0dp"
+
+                    android:padding="2dp"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/linearLayoutFollowerCounter"
-                    app:layout_constraintTop_toBottomOf="@id/viewHeading">
-
-
-                    <TextView
-                        android:id="@+id/tvTotal_number_of_subscriber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="4dp"
-
-                        android:text="0"
-                        android:textColor="@color/dark_orange"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvTotalSubscriber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:padding="2dp"
-                        android:text="Subscribers"
-                        android:textAlignment="center"
-                        android:textColor="@color/orange"
-                        android:textSize="12sp" />
-
-
-                </LinearLayout>
-
-
+                    app:layout_constraintStart_toStartOf="@id/student_constraint"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalstudent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -224,19 +103,16 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/dashboard_subscriber_cardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
             app:cardCornerRadius="16dp"
+            android:clickable="true"
             app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="@id/dashboard_constraint"
             app:layout_constraintStart_toEndOf="@id/dashboard_student_cardView"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_Academy_cardView"
+            app:layout_constraintTop_toBottomOf="@id/newsSlider_dashboard"
             app:layout_goneMarginBottom="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -246,73 +122,36 @@
                 android:background="#fff">
 
                 <TextView
-                    android:id="@+id/headingCoaches"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/aldrich"
-                    android:text="Coaches"
+                    android:id="@+id/tvTotalSubscriber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_margin="8dp"
+                    android:padding="2dp"
+                    android:text="Paid
+                    Subscribers"
                     android:textAlignment="center"
-                    android:textColor="#4E4E4E"
+                    android:textColor="@color/orange"
                     android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/tvTotal_number_of_subscriber"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/viewHeadingCoaches"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="#E9E8E8E8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/headingCoaches" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical"
+                <TextView
+                    android:id="@+id/tvTotal_number_of_subscriber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:padding="2dp"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
 
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/viewHeadingCoaches">
-
-                    <TextView
-                        android:id="@+id/tvTotal_number_of_coach_subscriber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="4dp"
-
-                        android:text="0"
-                        android:textColor="@color/dark_orange"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvTotalSubscriberCoach"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="8dp"
-                        android:padding="2dp"
-                        android:text="Connections"
-                        android:textAlignment="center"
-                        android:textColor="@color/orange"
-                        android:textSize="12sp" />
-
-
-                </LinearLayout>
-
-
+                    app:layout_constraintStart_toStartOf="@id/subscriber_constraint"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTotalSubscriber" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -322,105 +161,63 @@
             android:id="@+id/part"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
             app:cardBackgroundColor="#c1c1c1"
+            android:layout_margin="8dp"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dashboard_subscriber_cardView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_subscriber_cardView" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/lecture_dashBoard_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="8dp"
             android:padding="8dp"
-
-
+            app:cardCornerRadius="8dp"
+            android:background="@drawable/spinner_background"
+            app:cardElevation="4dp"
             app:cardPreventCornerOverlap="false"
-
+            app:layout_constraintTop_toBottomOf="@id/part"
             app:layout_constraintBottom_toBottomOf="@id/dashboard_constraint"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/part">
-
+            app:layout_constraintStart_toStartOf="parent">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
-                <View
-                    android:id="@+id/viewlesson1"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-
-
-                    android:background="#D3CECE"
-                    app:layout_constraintEnd_toStartOf="@id/previous_lesson_dashboard"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
                 <TextView
                     android:id="@+id/previous_lesson_dashboard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_marginStart="4dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
                     android:paddingLeft="4dp"
+                    android:text="Latest lessons"
                     android:paddingBottom="4dp"
-                    android:text="Posts"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/orange"
                     android:textSize="16sp"
+
                     app:layout_constraintBottom_toTopOf="@id/rv_dash"
-                    app:layout_constraintEnd_toStartOf="@id/viewlesson2"
-                    app:layout_constraintStart_toEndOf="@id/viewlesson1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.842" />
 
-                <View
-                    android:id="@+id/viewlesson2"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-
-
-                    android:layout_marginTop="16dp"
-
-                    android:layout_marginEnd="16dp"
-                    android:background="#D3CECE"
-                    app:layout_constraintEnd_toEndOf="parent"
-
-                    app:layout_constraintStart_toEndOf="@id/previous_lesson_dashboard"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_dash"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="400dp"
                     android:layout_margin="4dp"
+                    app:layout_constraintTop_toBottomOf="@id/previous_lesson_dashboard"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/previous_lesson_dashboard" />
-
-                <ProgressBar
-                    android:id="@+id/progressBarPost"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@+id/rv_dash"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/rv_dash" />
 
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

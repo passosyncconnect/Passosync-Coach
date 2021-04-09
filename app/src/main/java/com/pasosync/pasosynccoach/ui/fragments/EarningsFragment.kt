@@ -29,7 +29,7 @@ class EarningsFragment : Fragment(R.layout.fargment_earnings) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = " "
+        (activity as AppCompatActivity).supportActionBar?.title = "Coach"
     }
 
 

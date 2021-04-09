@@ -10,24 +10,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
+import androidx.core.view.size
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.pasosync.pasosynccoach.R
-import com.pasosync.pasosynccoach.adapters.*
+import com.pasosync.pasosynccoach.adapters.DashBoardAdapter
+import com.pasosync.pasosynccoach.adapters.LectureAdapter
+import com.pasosync.pasosynccoach.adapters.NewsAdapter
 import com.pasosync.pasosynccoach.data.NewLectureDetails
-import com.pasosync.pasosynccoach.data.UserDetails
 import com.pasosync.pasosynccoach.databinding.FargmentDashboardBinding
+import com.pasosync.pasosynccoach.db.Lectures
 import com.pasosync.pasosynccoach.other.Constant.REQUEST_CODE_WRITING
 import com.pasosync.pasosynccoach.other.Permissions
 import com.pasosync.pasosynccoach.other.Resource
 import com.pasosync.pasosynccoach.ui.MainActivity
 import com.pasosync.pasosynccoach.ui.viewmodels.MainViewModels
-import com.pasosync.pasosynccoach.other.Event
-import kotlinx.android.synthetic.main.fargment_dashboard.*
+
 
 
 import kotlinx.coroutines.CoroutineScope
@@ -39,33 +43,40 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
 
-
 class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
     EasyPermissions.PermissionCallbacks {
-
+    private val TAG = "DashBoardFragment"
     private val KEY_TITLE = "title"
     private val KEY_FREE = "free"
-    private val KEY_FOLLOWER = "followers"
     lateinit var viewModel: MainViewModels
-
-    private var curLikedIndex: Int? = null
-
-    // lateinit var lectureAdapter: NewPostAdapter
-    private lateinit var binding: FargmentDashboardBinding
+    lateinit var lectureAdapter: DashBoardAdapter
+private lateinit var binding: FargmentDashboardBinding
     lateinit var builder: AlertDialog.Builder
-    var postAdapter = PostAdapter()
     var userList = arrayListOf<NewLectureDetails>()
     lateinit var dialog: AlertDialog
     private val user = FirebaseAuth.getInstance().currentUser
     private val db = FirebaseFirestore.getInstance()
-    private val dash = user?.uid!!
     private val lectureDetailsRef =
-        db.collection("Posts")
-    private val coachCollectRef = db.collection("UserDetails")
+        db.collection("CoachLectureList").document(user?.email.toString()).collection(
+            "PaidLecture"
+        )
+    val countRef = db.collection("CoachSubscriberCount").document(user?.email.toString())
+    val freeCountRef = db.collection("FreeCoachSubscriberCount").document(user?.email.toString())
+    lateinit var newsAdapter: NewsAdapter
+    private fun setUpRecyclerView() {
+        binding.rvDash.apply {
+            Log.d(TAG, "setUpRecyclerView: ${binding.rvDash.size}")
+            val query = lectureDetailsRef.orderBy("date", Query.Direction.DESCENDING).limit(3)
+            val options = FirestoreRecyclerOptions.Builder<NewLectureDetails>()
+                .setQuery(query, NewLectureDetails::class.java)
+                .build()
+            lectureAdapter = DashBoardAdapter(options)
+            adapter = lectureAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
 
-
-    val followerCountRef = db.collection("CoachFollowersCount").document(user?.uid!!)
- //   lateinit var newsAdapter: NewsAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,9 +84,6 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
     ): View? {
         val v: View = inflater.inflate(R.layout.fargment_dashboard, container, false)
         setHasOptionsMenu(true)
-        binding = FargmentDashboardBinding.bind(v)
-        //  setUpRecyclerView()
-        //   setupRecyclerViewPost()
 
         return v
     }
@@ -83,166 +91,84 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FargmentDashboardBinding.bind(view)
-        viewModel = (activity as MainActivity).viewmodel
+        binding= FargmentDashboardBinding.bind(view)
+        getSubscriberCount()
+        requestPermissions()
+        setUpRecyclerView()
+        getFreeSubscriberCount()
+        lectureAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("lecture", it)
+            }
+            findNavController().navigate(R.id.action_dashBoardFragment_to_lectureContent, bundle)
+        }
 
-       // setUpRecyclerViewNews()
+
+        viewModel = (activity as MainActivity).viewmodel
+        setUpRecyclerViewNews()
         (activity as AppCompatActivity).supportActionBar?.title = " "
 
-        requestPermissions()
-        showConnectorsCount()
 
-        setupRecyclerViewPost()
-        subscribeToObservers()
 
-        postAdapter.setOnLikeClickListener { post, i ->
-            curLikedIndex = i
-            post.isLiked = !post.isLiked
-            viewModel.toggleLikeForPost(post)
 
+        binding.dashboardStudentCardView.setOnClickListener {
+            findNavController().navigate(R.id.action_dashBoardFragment_to_freeSubscribersFragment)
         }
-
-
-        postAdapter.setOnLikedByClickListener { post ->
-            findNavController().navigate(
-                R.id.globalLiked,
-                Bundle().apply {
-                    putSerializable("id", post)
-                })
-
-            // viewModel.getUsers(post.likedBy)
-        }
-
-        postAdapter.setOnCommentsClickListener { post ->
-            findNavController().navigate(
-                R.id.globalActionToCommentDialog,
-                Bundle().apply { putString("postId", post.id) }
-            )
-        }
-
-
-        binding.dashboardAcademyCardView.setOnClickListener {
-          val counted=""
-            coachCollectRef.document(user?.uid!!).addSnapshotListener { value, error ->
-                try {
-                    if (value!=null){
-                        val pic= value?.getString("academy")
-                        // Glide.with(this).load(pic).placeholder(R.drawable.man).into(profileIvimage)
-                       // counted=pic!!
-                        // Log.d(TAG, "onCreate:$counted")
-
-                        val bundle=Bundle().apply {
-                            putString("academy",pic)
-                        }
-                        findNavController().navigate(R.id.action_dashBoardFragment_to_academyMembersListFragment,bundle)
-                    }
-                    else{
-                        //  Log.d(TAG, "onCreate:$counted")
-                    }
-                } catch (e: Exception) {
-                    //  Log.e(TAG, "onCreate: ${error.toString()}", )
-                }
-
-            }
-
-        }
-
-
-
-
-
         binding.dashboardSubscriberCardView.setOnClickListener {
-            findNavController().navigate(R.id.action_dashBoardFragment_to_allCoachListFragment)
+            findNavController().navigate(R.id.action_dashBoardFragment_to_paidSubscribersFragment)
         }
-        binding.linearLayoutFollowerCounter.setOnClickListener {
-            findNavController().navigate(R.id.action_dashBoardFragment_to_subscribersFragment2)
-        }
-        binding.linearLayoutSubscriberCounter.setOnClickListener {
-            findNavController().navigate(R.id.action_dashBoardFragment_to_subscribersFragment2)
-        }
-        viewModel.cricketNews.observe(viewLifecycleOwner, { response ->
+        viewModel.cricketNews.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { newsResponse ->
-                      //  newsAdapter.differ.submitList(newsResponse.articles)
+                        newsAdapter.differ.submitList(newsResponse.articles)
                     }
                 }
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-
+                        Log.e(TAG, "An error occured: $message")
                     }
                 }
                 is Resource.Loading -> {
-                   // showProgressBar()
+                    showProgressBar()
                 }
             }
 
-
         })
-        //  getFollowerSubscriberCount()
-
-        getSubscriberCount()
-        getFreeSubscriberCount()
     }
 
     private fun getSubscriberCount() = CoroutineScope(Dispatchers.IO).launch {
         try {
-            //new method for resolving null at creation stage
-
-
-            val subscriberCountRef=db.collection("CoachSubscriberCount")
-            var count="0"
-            subscriberCountRef.document(dash).addSnapshotListener { value, error ->
-                value?.let {
-                    var title = value.get(KEY_TITLE).toString()
-
+            if (countRef==null){
+                binding.tvTotalNumberOfSubscriber.text="0"
+                Log.d(TAG, "ge: ${binding.tvTotalNumberOfSubscriber}")
+            }else{
+                var count = "0"
+                countRef.get().addOnSuccessListener {
+                    var title = it.get(KEY_TITLE).toString()
                     count = title
-                    binding.tvTotalNumberOfSubscriber.text = title
+
+                    Log.d(TAG, "getSubscriberCount: $title")
+                    Log.d(TAG, "getSubscriberCount: $count")
+                }.await()
+                withContext(Dispatchers.Main) {
+                    if (count.equals(0)){
+                        binding.tvTotalNumberOfSubscriber.text="00"
+
+                    }else{
+                        binding.tvTotalNumberOfSubscriber.text = count
+                    }
+
+
+
+
+
+
                 }
 
             }
-            withContext(Dispatchers.Main) {
-
-
-
-
-            }
-
-
-
-
-
-
-//            val countRef = db.collection("CoachSubscriberCount").document(user?.uid!!)
-//            if (countRef == null) {
-//                binding.tvTotalNumberOfSubscriber.text = "0"
-//            }
-//            else {
-//                var count = "0"
-//                countRef.get().addOnSuccessListener {
-//                    var title = it.get(KEY_TITLE).toString()
-//                    Log.d(TAG, "getSubscriberCount: ${title}")
-//                    count = title
-//
-//
-//                }.await()
-//                withContext(Dispatchers.Main) {
-//                    if (count.equals(0)) {
-//                        binding.tvTotalNumberOfSubscriber.text = "00"
-//
-//                    } else {
-//                        binding.tvTotalNumberOfSubscriber.text = count
-//                    }
-//
-//
-//                }
-//
-//            }
-
-
-
 
         } catch (e: Exception) {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
@@ -251,55 +177,16 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
 
     private fun getFreeSubscriberCount() = CoroutineScope(Dispatchers.IO).launch {
         try {
-            val freeCountRef = db.collection("FreeCoachSubscriberCount")
             var count = "0"
-            freeCountRef.document(dash).addSnapshotListener { value, error ->
-                value?.let {
-                    var title = value.get(KEY_FREE).toString()
-
-                    count = title
-                    binding.tvTotalNumberOfStudent.text = title
-                }
-
-
-            }
-
+            freeCountRef.get().addOnSuccessListener {
+                var title = it.get(KEY_FREE).toString()
+                count = title
+                Log.d(TAG, "getSubscriberCount: $title")
+                Log.d(TAG, "getSubscriberCount: $count")
+            }.await()
             withContext(Dispatchers.Main) {
-
+                binding.tvTotalNumberOfStudent.text = count
             }
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-
-    private fun getFollowerSubscriberCount() = CoroutineScope(Dispatchers.IO).launch {
-        try {
-
-
-
-                var count = "0"
-                followerCountRef.get().addOnSuccessListener {
-                    var title = it.get(KEY_FOLLOWER).toString()
-
-                    count = title
-
-
-                }.await()
-                withContext(Dispatchers.Main) {
-                    if (count.equals(0)) {
-                        binding.tvTotalNumberOfCoachSubscriber.text = "00"
-
-                    } else {
-                        binding.tvTotalNumberOfCoachSubscriber.text = count
-                    }
-
-
-                }
-
-
-
         } catch (e: Exception) {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
         }
@@ -315,8 +202,7 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
                 "These permissions are must to use this App",
                 REQUEST_CODE_WRITING,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
         }
     }
@@ -341,28 +227,28 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
     }
 
     private fun hideProgressBar() {
-      //  binding.paginationProgressBar.visibility = View.INVISIBLE
+        binding.paginationProgressBar.visibility = View.INVISIBLE
     }
 
     private fun showProgressBar() {
-      //  binding.paginationProgressBar.visibility = View.VISIBLE
+        binding.paginationProgressBar.visibility = View.VISIBLE
     }
 
-//    private fun setUpRecyclerViewNews() = binding.newsSliderDashboard.apply {
-//        newsAdapter = NewsAdapter()
-//        adapter = newsAdapter
-//        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        newsAdapter.setOnItemClickListener {
-//            Log.e("Nee=w=", "getting click")
-//            val bundle = Bundle().apply {
-//                putSerializable("article", it)
-//            }
-//            findNavController().navigate(
-//                R.id.action_dashBoardFragment_to_articleFragment, bundle
-//            )
-//
-//        }
-//    }
+    private fun setUpRecyclerViewNews() = binding.newsSliderDashboard.apply {
+        newsAdapter = NewsAdapter()
+        adapter = newsAdapter
+        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        newsAdapter.setOnItemClickListener {
+            Log.e("Nee=w=", "getting click")
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_dashBoardFragment_to_articleFragment, bundle
+            )
+
+        }
+    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -372,121 +258,12 @@ class DashBoardFragment : Fragment(R.layout.fargment_dashboard),
 
     override fun onStart() {
         super.onStart()
-        // setUpRecyclerView()
-        // lectureAdapter.startListening()
-
+        lectureAdapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        // lectureAdapter.stopListening()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    private fun subscribeToObservers() {
-        viewModel.likePostStatus.observe(viewLifecycleOwner, Event.EventObserver(
-            onError = {
-                curLikedIndex?.let { index ->
-                    postAdapter.posts[index].isLiking = false
-                    postAdapter.notifyItemChanged(index)
-                }
-                // snackbar(it)
-            },
-            onLoading = {
-                curLikedIndex?.let { index ->
-                    postAdapter.posts[index].isLiking = true
-                    postAdapter.notifyItemChanged(index)
-                }
-            }
-        ) { isLiked ->
-            curLikedIndex?.let { index ->
-                val uid = FirebaseAuth.getInstance().currentUser?.uid!!
-                postAdapter.posts[index].apply {
-                    this.isLiked = isLiked
-                    isLiking = false
-                    if (isLiked) {
-                        likedBy += uid
-                    } else {
-                        likedBy -= uid
-                    }
-                }
-                postAdapter.notifyItemChanged(index)
-            }
-        })
-
-        viewModel.counterForPost.observe(
-            viewLifecycleOwner, Event.EventObserver(
-                onError = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                },
-                onLoading = {
-
-                })
-            {
-
-            }
-
-
-        )
-
-
-
-
-        viewModel.posts.observe(viewLifecycleOwner, Event.EventObserver(
-            onError = {
-                progressBarPost.isVisible = false
-                // postProgressBar.isVisible = false
-                // snackbar(it)
-                //Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-            },
-            onLoading = {
-                progressBarPost.isVisible = true
-                //postProgressBar.isVisible = true
-            }
-        ) { posts ->
-            // postProgressBar.isVisible = false
-            progressBarPost.isVisible = false
-            postAdapter.posts = posts
-        })
-
-
-    }
-
-
-    private fun setupRecyclerViewPost() = rv_dash.apply {
-        adapter = postAdapter
-        layoutManager = LinearLayoutManager(requireContext())
-        itemAnimator = null
-    }
-
-    private fun showConnectorsCount() {
-
-        coachCollectRef.document(user?.uid!!).get().addOnSuccessListener {
-            val coach = it.toObject(UserDetails::class.java)!!
-
-
-//
-//            isConnected=model.coachEmail in coach.follows
-//            if (isConnected){
-//                Log.d(com.pasosync.pasosynccoach.adapters.TAG, "true:$isConnected")
-//                tvConnected.visibility=View.VISIBLE
-//            }else{
-//                tvConnected.visibility=View.GONE
-//                Log.d(com.pasosync.pasosynccoach.adapters.TAG, "false:$isConnected ")
-//            }
-
-
-                val count = coach.followsCoaches.size - 1
-
-                tvTotal_number_of_coach_subscriber.text = count.toString()
-
-
-
-        }
-
+         lectureAdapter.stopListening()
     }
 
 }

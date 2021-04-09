@@ -34,8 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Add a New Drill"
-                    android:fontFamily="@font/aldrich"
+                    android:text="Add a New Lecture"
                     android:textAlignment="center"
                     android:textColor="#B9000000"
                     android:textSize="28sp"
@@ -43,7 +42,34 @@
 
                     />
 
+                <RadioGroup
 
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_free"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:checked="true"
+                        android:text="Free"
+
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_paid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Premium"
+
+                        android:textSize="20sp" />
+
+                </RadioGroup>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -51,7 +77,7 @@
                     android:layout_margin="4dp"
                     android:text="Choose a Category from below :-"
                     android:textColor="#272626"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -84,7 +110,7 @@
                         android:ellipsize="end"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
-                        android:hint="Drill Title"
+                        android:hint="Lecture Title"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textAlignment="textStart"
@@ -155,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:orientation="horizontal"
-                  app:layout_constraintBottom_toTopOf="@id/videolinear"
+                    app:layout_constraintBottom_toTopOf="@id/pdflinear"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -171,6 +197,67 @@
 
                         />
 
+                    <Button
+                        android:id="@+id/btn_new_post_choose_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="8dp"
+                        android:layout_weight="50"
+                        android:background="@drawable/spinner_background"
+                        android:text="Upload the Image"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dark_orange"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/pdflinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/videolinear"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imagepostlinear">
+
+                    <ImageView
+                        android:id="@+id/new_post_pdf"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="50"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/selectpdf"
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_new_post_choose_pdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="8dp"
+                        android:layout_weight="50"
+                        android:background="@drawable/spinner_background"
+                        android:text="Upload a new pdf"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dark_orange"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/videolinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pdflinear">
+
                     <ImageView
                         android:id="@+id/new_post_video"
                         android:layout_width="0dp"
@@ -182,82 +269,18 @@
 
                         />
 
-<!--                    <Button-->
-<!--                        android:id="@+id/btn_new_post_choose_image"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_vertical"-->
-<!--                        android:layout_margin="8dp"-->
-<!--                        android:layout_weight="50"-->
-<!--                        android:background="@drawable/spinner_background"-->
-<!--                        android:text="Upload the Image"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/dark_orange"-->
-<!--                        android:textSize="14sp" />-->
-                </LinearLayout>
-
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/pdflinear"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_margin="4dp"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintBottom_toTopOf="@id/videolinear"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/imagepostlinear">-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/new_post_pdf"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="100dp"-->
-<!--                        android:layout_weight="50"-->
-<!--                        android:padding="4dp"-->
-<!--                        android:scaleType="fitCenter"-->
-<!--                        android:src="@drawable/selectpdf"-->
-
-<!--                        />-->
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btn_new_post_choose_pdf"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_vertical"-->
-<!--                        android:layout_margin="8dp"-->
-<!--                        android:layout_weight="50"-->
-<!--                        android:background="@drawable/spinner_background"-->
-<!--                        android:text="Upload a new pdf"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/dark_orange"-->
-<!--                        android:textSize="14sp" />-->
-<!--                </LinearLayout>-->
-
-                <LinearLayout
-                    android:id="@+id/videolinear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/btn_upload_new_post"
-                    app:layout_constraintTop_toBottomOf="@id/imagepostlinear">
-
-
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btn_new_post_choose_video"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_vertical"-->
-<!--                        android:layout_margin="8dp"-->
-<!--                        android:layout_weight="50"-->
-<!--                        android:background="@drawable/spinner_background"-->
-<!--                        android:text="Upload the video"-->
-<!--                        android:textAllCaps="false"-->
-<!--                        android:textColor="@color/dark_orange"-->
-<!--                        android:textSize="14sp" />-->
+                    <Button
+                        android:id="@+id/btn_new_post_choose_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="8dp"
+                        android:layout_weight="50"
+                        android:background="@drawable/spinner_background"
+                        android:text="Upload the video"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dark_orange"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
 
@@ -267,11 +290,9 @@
                     android:layout_height="65dp"
                     android:layout_margin="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Upload New Drill"
+                    android:text="Upload New Post"
                     android:textAllCaps="false"
-                    android:fontFamily="@font/avenir"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/videolinear" />
@@ -311,7 +332,7 @@
                         app:cardCornerRadius="8dp"
                         app:cardElevation="4dp"
                         app:cardPreventCornerOverlap="false"
-
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btn_upload_new_post">
@@ -326,8 +347,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-
-                                android:src="@drawable/draft_for_post_small"
+                                android:layout_margin="4dp"
+                                android:src="@drawable/draft_for_post"
 
                                 />
 
@@ -336,104 +357,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:text="Save new draft"
+                                android:text="Save to Draft"
                                 android:textColor="#4C4B4B"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@id/tv_new_post_draftList"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="8dp"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:padding="8dp"
-                        android:layout_weight="50"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btn_upload_new_post">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-
-                                android:src="@drawable/smalllist"
-
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_new_post_draftList"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="4dp"
-                                android:text="See Draft List"
-                                android:textColor="#4C4B4B"
-                                android:textSize="10sp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardUpdatePost"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="8dp"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:padding="8dp"
-                        android:layout_weight="50"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btn_upload_new_post">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-
-                                android:src="@drawable/draft_for_post_small"
-
-                                />
-
-                            <TextView
-                                android:id="@+id/tvUpdateDraft"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="4dp"
-                                android:text="Update draft"
-                                android:textColor="#4C4B4B"
-                                android:textSize="10sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
 

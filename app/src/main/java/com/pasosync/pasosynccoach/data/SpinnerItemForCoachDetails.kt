@@ -12,10 +12,7 @@ object TypesCoach {
     private val images = intArrayOf(
         R.drawable.bat,
         R.drawable.ic_baseline_sports_baseball_24,
-        R.drawable.field,
-        R.drawable.field,
-        R.drawable.bat
-
+        R.drawable.field
 
 
 
@@ -24,9 +21,7 @@ object TypesCoach {
     private val category = arrayOf(
         "Batting",
         "Bowling",
-        "Fielding",
-        "Wicket Keeper",
-        "All Rounder"
+        "Fielding"
     )
 
     var list: ArrayList<SpinnerItemForCoachDetails>? = null

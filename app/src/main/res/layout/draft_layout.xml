@@ -31,8 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:padding="2dp"
-                android:fontFamily="@font/avenir"
-                android:textColor="#4C4B4B"
+                android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -41,10 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:fontFamily="@font/avenir"
                 android:padding="2dp"
                 android:textAlignment="textStart"
-                android:textColor="#757373"
+                android:textColor="#000"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -66,7 +64,7 @@
                     app:layout_constraintBottom_toTopOf="@id/videoCardView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintTop_toBottomOf="@id/infoCardView" />
 
                 <Button
                     android:id="@+id/bt_draft_delete"

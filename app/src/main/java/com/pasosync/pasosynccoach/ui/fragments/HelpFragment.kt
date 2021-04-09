@@ -29,8 +29,6 @@ class HelpFragment: Fragment(R.layout.fargment_help) {
     }
 
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding= FargmentHelpBinding.bind(view)
@@ -42,7 +40,7 @@ binding.tvHelpEmailWrite.setOnClickListener {
     }
 
     private fun sendMail(){
-        val emailaddress = arrayOf<String>("support@passosync.com")
+        val emailaddress = arrayOf<String>("Pasosync@pasosync.com")
 
         val intent = Intent(Intent.ACTION_SEND)
         intent.putExtra(Intent.EXTRA_EMAIL,emailaddress)
