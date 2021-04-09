@@ -1,38 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lectureList_recycler_constraint"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
 
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/rv_fragment_your_progress"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_margin="4dp"-->
+    <!--        android:scrollbarSize="4dp"-->
+    <!--        android:scrollbars="vertical"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/fab_progress"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="m"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        app:rippleColor="@color/dark_orange"-->
+    <!--        android:backgroundTint="#fff"-->
+    <!--        app:fabSize="normal"-->
+    <!--        android:src="@drawable/fab_add"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_lectureList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="4dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-         />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_paid_lectureList"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabsLecture"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_lectureList" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            app:tabBackground="@android:color/white"
+            app:tabGravity="fill"
+            app:tabInlineLabel="true"
+            app:tabTextColor="@color/colorPrimaryDark"
 
-</ScrollView>
+            >
+
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager2Lecture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBarLayout">
+
+
+
+
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fabMenuGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:menu_animationDelayPerItem="55"
+            app:menu_backgroundColor="@android:color/transparent"
+            app:menu_buttonSpacing="0dp"
+            app:menu_colorNormal="@color/dark_orange"
+            app:menu_colorPressed="@color/orange"
+            app:menu_colorRipple="#FFC107"
+            app:menu_fab_label="Cancel"
+            android:layout_margin="4dp"
+            app:menu_fab_size="normal"
+            app:menu_icon="@drawable/fab_add"
+            app:menu_labels_colorNormal="@color/dark_orange"
+            app:menu_labels_colorPressed="@color/orange"
+            app:menu_labels_colorRipple="#FFC107"
+            app:menu_labels_cornerRadius="3dp"
+            app:menu_labels_ellipsize="none"
+            app:menu_labels_maxLines="-1"
+            app:menu_labels_padding="8dp"
+            app:menu_labels_position="left"
+            app:menu_labels_showShadow="true"
+            app:menu_labels_singleLine="false"
+            app:menu_labels_textColor="#f2f1f1"
+            app:menu_labels_textSize="15sp"
+            app:menu_openDirection="up"
+            app:menu_shadowColor="#FFFFFF"
+            app:menu_shadowRadius="2dp"
+            app:menu_shadowXOffset="1dp"
+            app:menu_shadowYOffset="1dp"
+            app:menu_showShadow="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/gameScoreFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fab_add"
+                app:fab_label="Add a Score"
+                app:fab_size="mini"
+
+                />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/gameVideoFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fab_add"
+                app:fab_label="Add a video"
+                app:fab_size="mini" />
+
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+
+
+
+
+
+</RelativeLayout>

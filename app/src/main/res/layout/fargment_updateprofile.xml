@@ -29,35 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/update_profile_pic"
-                    android:layout_width="200dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/ic_baseline_person_24"
-                    app:civ_border_color="#807F7F"
-                    app:civ_border_width="2dp"
-                    app:layout_constraintBottom_toTopOf="@id/update_choose_btn"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/constraint_profileUpdate" />
 
-                <Button
-                    android:id="@+id/update_choose_btn"
-                    android:layout_width="225dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Upload Image"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/update_profile_pic" />
 
                 <TextView
                     android:id="@+id/tv_category_update_profile"
@@ -67,13 +39,14 @@
                     android:layout_marginBottom="4dp"
                     android:layout_marginRight="4dp"
                     android:layout_marginLeft="4dp"
-                    android:text="Choose your speciality from below :-"
+                    android:text="Select your academy from below :-"
                     android:textColor="#272626"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/update_choose_btn" />
+                   app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <Spinner
                     android:id="@+id/spinner_update_profile"
@@ -88,16 +61,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_category_update_profile" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/update_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="6dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Update Speciality"
+                    android:text="Update Academy"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:textAllCaps="false"
-                    android:background="@drawable/spinner_background"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@color/orange"
                     android:textColor="@color/dark_orange"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/spinner_update_profile" />
@@ -172,6 +147,7 @@
                     android:textAlignment="textStart"
                     android:textColorHint="#7D7D7D"
                     app:errorEnabled="true"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/update_mobile_input"
@@ -189,7 +165,7 @@
                         android:focusableInTouchMode="true"
                         android:hint="Your Experience in Years"
                         android:inputType="phone"
-                        android:maxLines="1"
+                       android:maxLength="2"
                         android:singleLine="true"
                         android:textAlignment="textStart"
                         android:textSize="18sp" />
@@ -272,7 +248,7 @@
                     android:id="@+id/update_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_margin="4dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -284,24 +260,12 @@
                         android:layout_height="100dp"
                         android:layout_weight="50"
                         android:padding="4dp"
+                        android:layout_gravity="center"
                         android:scaleType="fitCenter"
                         android:src="@drawable/selectvideo"
-
                         />
 
-                    <Button
-                        android:id="@+id/update_video"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="8dp"
-                        android:layout_weight="50"
-                        android:text="Update Video"
-                        android:textAllCaps="false"
-                        android:textColor="#fff"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+
 
 
                 </LinearLayout>

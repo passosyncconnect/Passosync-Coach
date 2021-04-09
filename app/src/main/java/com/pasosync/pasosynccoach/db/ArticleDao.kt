@@ -1,4 +1,4 @@
-package com.bairwa.newsapp.database
+package com.pasosync.pasosynccoach.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

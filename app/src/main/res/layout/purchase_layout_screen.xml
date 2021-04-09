@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivCoachPlusPurchaseProfilePic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/man"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#F1F1F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFragmentCoachPlusHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/coach_plus"
+        android:textColor="#3E3D3D"
+        android:textSize="24sp"
+        android:fontFamily="@font/aldrich"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCoachPlusPurchaseProfilePic" />
+
+    <ImageView
+        android:id="@+id/trophy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/gamenew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCoachPlusPurchaseProfilePic" />
+
+    <View
+        android:id="@+id/viewtrophy"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentCoachPlusHeading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvThingsWillNeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Things you will get:-"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="#252525"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewtrophy"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/purchaseViewpager"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@id/tab_purchase_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvThingsWillNeed" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_purchase_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F1F1F1"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/purchaseViewpager"
+        app:tabBackground="@drawable/indicator_selector"
+        app:tabGravity="center"
+        app:tabIndicatorColor="#F1F1F1"
+        app:tabSelectedTextColor="@color/white">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <RadioGroup
+        android:id="@+id/rgPackage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btMakePayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbFreeTrial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:checked="true"
+            android:text="free Trial"
+
+            android:fontFamily="@font/avenir"
+            android:textColor="#676464"
+            android:textSize="16sp" />
+
+
+        <RadioButton
+            android:id="@+id/rbMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+
+            android:text="Rs.175/monthly"
+            android:fontFamily="@font/avenir"
+            android:textColor="#676464"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbYearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+
+            android:text="Rs.1800/yearly"
+            android:fontFamily="@font/avenir"
+            android:textColor="#676464"
+            android:textSize="16sp" />
+
+
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btMakePayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Payment Page"
+        android:textAllCaps="false"
+        android:padding="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

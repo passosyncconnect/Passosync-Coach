@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/coachplusbackgroundimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivcoachPlusProfilePic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="148dp"
+            android:src="@drawable/man"
+            app:civ_border_color="#F8E4A8"
+            app:civ_border_width="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearCoachPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivcoachPlusProfilePic">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvCoachNamePlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aldrich"
+
+                    android:text="coachName"
+                    android:gravity="bottom"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/gamenew"
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir"
+                android:id="@+id/tvCoachSpecialityPlus"
+                android:text="Coach Speciality"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir"
+                android:text="@string/company_name"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:src="@mipmap/coachiconsquare"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivcoachPlusProfilePic" />
+
+        <View
+            android:id="@+id/viewCoachPlusDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toTopOf="@id/btAnalytics"
+            android:background="@android:color/darker_gray"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearCoachPlus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btAnalytics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#E1DEDE"
+            android:drawableEnd="@drawable/arrow_grey"
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:text="Analytics"
+            android:textAllCaps="false"
+            android:textColor="#3E3D3D"
+            android:textSize="28sp"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@id/viewCoachPlusAnalyitcs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewCoachPlusDashboard" />
+
+
+        <View
+            android:id="@+id/viewCoachPlusAnalyitcs"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/darker_gray"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/btPlayers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btAnalytics" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#E1DEDE"
+            android:drawableEnd="@drawable/arrow_grey"
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:text="My Players"
+            android:textAllCaps="false"
+            android:textColor="#3E3D3D"
+            android:textSize="28sp"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewCoachPlusAnalyitcs" />
+
+
+        <View
+            android:id="@+id/viewConsultation"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/cdConsultation"
+            android:background="@android:color/darker_gray"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btPlayers" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cdConsultation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#E1DEDE"
+            app:cardCornerRadius="16dp"
+app:layout_constraintBottom_toTopOf="@id/viewMentorship"
+            app:layout_constraintTop_toBottomOf="@id/viewConsultation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir"
+                    android:text="Consultation"
+                    android:layout_weight="50"
+                    android:textColor="#3E3D3D"
+                    android:gravity="end"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:textSize="28sp"
+
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/toggleConsultation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center"
+                    android:thumb="@drawable/thumb1"
+                    app:track="@drawable/track"
+                    android:shadowColor="#8e8e8e"
+
+
+                     />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/viewMentorship"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/cdMentorship"
+            android:background="@android:color/darker_gray"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cdConsultation" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cdMentorship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#E1DEDE"
+            app:cardCornerRadius="16dp"
+android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/viewCoachPlus"
+            app:layout_constraintTop_toBottomOf="@id/viewMentorship"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir"
+                    android:text="Mentorship"
+                    android:layout_weight="50"
+                    android:layout_gravity="center"
+                    android:gravity="end"
+                    android:textColor="#3E3D3D"
+                    android:layout_marginStart="8dp"
+                    android:textSize="28sp"
+
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/toggleMentorShip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center"
+                    android:thumb="@drawable/thumb1"
+                    app:track="@drawable/track"
+                    />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/viewCoachPlus"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/darker_gray"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cdMentorship" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

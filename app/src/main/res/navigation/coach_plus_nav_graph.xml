@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/coach_plus_nav_graph"
+    app:startDestination="@id/fragmentCoachPlusDashBoard">
+
+    <fragment
+        android:id="@+id/fragmentCoachPlusDashBoard"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.FragmentCoachPlusDashBoard"
+        android:label="FragmentCoachPlusDashBoard" >
+        <action
+            android:id="@+id/action_fragmentCoachPlusDashBoard_to_gameVideoFragment"
+            app:destination="@id/gameVideoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameProgressVideoUpload"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.GameProgressVideoUpload"
+        android:label="GameProgressVideoUpload" >
+        <action
+            android:id="@+id/action_gameProgressVideoUpload_to_gameVideoFragment"
+            app:destination="@id/gameVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameVideoFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.GameVideoFragment"
+        android:label="GameVideoFragment" >
+        <action
+            android:id="@+id/action_gameVideoFragment_to_videoProgressDetailsAnalytics"
+            app:destination="@id/videoProgressDetailsAnalytics" />
+        <action
+            android:id="@+id/action_gameVideoFragment_to_gameProgressVideoUpload"
+            app:destination="@id/gameProgressVideoUpload" />
+    </fragment>
+    <fragment
+        android:id="@+id/expandIamgeView"
+        android:name="com.pasosync.pasosyncconnect.ui.fragment.ExpandIamgeView"
+        android:label="ExpandIamgeView" >
+        <argument
+            android:name="expand"
+            app:argType="com.pasosync.pasosynccoach.data.QueryDataRV" />
+    </fragment>
+    <fragment
+        android:id="@+id/drawOnImage"
+        android:name="com.pasosync.pasosyncconnect.ui.fragment.DrawOnImage"
+        android:label="DrawOnImage" >
+        <argument
+            android:name="draw"
+            app:argType="com.pasosync.pasosynccoach.data.QueryDataRV" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoProgressDetailsAnalytics"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.VideoProgressDetailsAnalytics"
+        android:label="VideoProgressDetailsAnalyitcs" >
+        <action
+            android:id="@+id/action_videoProgressDetailsAnalytics_to_drawOnImage"
+            app:destination="@id/drawOnImage" />
+        <action
+            android:id="@+id/action_videoProgressDetailsAnalytics_to_expandIamgeView"
+            app:destination="@id/expandIamgeView" />
+        <argument
+            android:name="video"
+            app:argType="com.pasosync.pasosynccoach.data.VideoProgressData" />
+    </fragment>
+</navigation>

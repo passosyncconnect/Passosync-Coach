@@ -22,7 +22,7 @@ import com.pasosync.pasosynccoach.databinding.LectureContentBinding
 class LectureContent : Fragment(R.layout.lecture_content) {
 
    private lateinit var binding:LectureContentBinding
-    private val TAG = "LectureContent"
+
     lateinit var mediaController: MediaController
     val args: LectureContentArgs by navArgs()
 
@@ -49,7 +49,7 @@ class LectureContent : Fragment(R.layout.lecture_content) {
         binding.lectureDetailsTvDescription.movementMethod = ScrollingMovementMethod()
         binding.lectureDetailsTvType.text=lecture.seacrh
         val videoUrl = lecture.lectureVideoUrl?.toUri()
-        Log.d(TAG, "onViewCreated: ${lecture.lecturePdfUrl}")
+
 
         if (videoUrl == null) {
             Snackbar.make(requireView(), "there is no video", Snackbar.LENGTH_LONG).show()

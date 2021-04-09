@@ -20,11 +20,11 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        binding= ActivitySplashScreenBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
         bottomAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.bottom_animation)
-binding.splash.animation=bottomAnim
+        binding.splash.animation = bottomAnim
         val splash: Thread = object : Thread() {
             override fun run() {
                 try {

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_subscribers.*
 
 
 class FreeSubscribersFragment:Fragment(R.layout.fragment_free_subscribers) {
-    private  val TAG = "FreeSubscribersFragment"
+
     private val user = FirebaseAuth.getInstance().currentUser
     private val db = FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentFreeSubscribersBinding
@@ -68,24 +68,24 @@ class FreeSubscribersFragment:Fragment(R.layout.fragment_free_subscribers) {
             dialog.show()
             userList.clear()
             val freelectureRef = db.collection("CoachLectureList")
-                .document(user?.email.toString()).collection("FreeSubscribedUsers")
+                .document(user?.uid!!).collection("FreeSubscribedUsers")
                 .get().addOnSuccessListener {
                     for (document in it.documents) {
                         dialog.dismiss()
                         val userDetails = UserDetails(
-                            document.getString("userName"),
-                            document.getString("userEmail"),
-                            document.getString("userMobile"),
-                            document.getString("userAge"),
-                            document.getString("userPicUri")
+                            document.getString("userName")!!,
+                            document.getString("userEmail")!!,
+                            document.getString("userMobile")!!,
+                            document.getString("userAge")!!,
+                            document.getString("userPicUri")!!
                         )
                         userList.add(userDetails)
-                        Log.d(TAG, "showData: ${userList.size}")
+
                         val count: HashMap<String, Any> = HashMap()
                         count[KEY_FREE] = userList.size
                         val countRef =
                             db.collection("FreeCoachSubscriberCount")
-                                .document(user?.email.toString())
+                                .document(user?.uid!!)
                                 .set(count)
                     }
                     subscribedAdapter = SubscribedAdapter(userList)

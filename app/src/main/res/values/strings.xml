@@ -13,6 +13,53 @@
     <string name="subs_email"><b>Email: </b></string>
     <string name="subs_mobile"><b>Mobile: </b></string>
     <string name="subs_age"><b>Age: </b></string>
+
+    <string name="your_profile">Your Profile</string>
+    <string name="example_post_text">Today is a good day to make a post in this social network, this is actually just an example text I write to have some lines of text</string>
+    <string name="example_post_username">user name</string>
+    <string name="search_hint">Search...</string>
+    <string name="posts">Posts</string>
+    <string name="logout">Logout</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+
+    <string name="login_with_existing_account">Login with an existing account</string>
+
+    <string name="repeat_password">Repeat Password</string>
+    <string name="success_registration">Successfully registered account</string>
+    <string name="error_password_too_short">The password must be at least %d digits long</string>
+    <string name="error_username_too_short">The username can\'t have less than %d characters</string>
+    <string name="error_username_too_long">The username can\'t have more than %d characters</string>
+    <string name="error_not_a_valid_email">Please enter a valid E-Mail</string>
+    <string name="error_input_empty">The fields must not be empty</string>
+    <string name="error_incorrectly_repeated_password">The passwords do not match</string>
+    <string name="error_invalid_credentials">The E-Mail or password is incorrect</string>
+    <string name="error_unknown">An unknown error occurred</string>
+    <string name="choose_image">Choose image</string>
+    <string name="enter_post_text">Enter post text...</string>
+    <string name="post">Post</string>
+    <string name="error_invalid_file">The chosen image is invalid</string>
+    <string name="username">Username</string>
+    <string name="no_description">No Description</string>
+    <string name="description">Description</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="edit_your_profile">Edit your Profile</string>
+    <string name="profile_updated">Profile updated</string>
+    <string name="no_changes_detected">You didn\'t change anything</string>
+    <string name="delete_lecture_dialog_title">Do you want to delete that?</string>
+    <string name="delete_post_dialog_title">Do you want to delete that Post?</string>
+    <string name="delete_post_dialog_message">This action cannot be undone.</string>
+    <string name="delete_post_dialog_positive">Yes</string>
+    <string name="delete_post_dialog_negative">No</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="follow">Follow</string>
+    <string name="liked_by_dialog_title">Liked by</string>
+    <string name="error_no_image_chosen">Please choose an image for the post</string>
+    <string name="enter_comment">Enter Comment</string>
+    <string name="comments">Comments</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
     <string-array name="search">
 
         <item>Batting</item>
@@ -34,4 +81,6 @@
     <string name="emailForHelp">pasosync@pasosync.com</string>
     <string name="about_profile">Ravishankar Shastri (born 27 May 1962) is an Indian cricket coach, former commentator, cricketer and current head coach of the Indian national cricket team. As a player, he played for the India national cricket team between 1981 and 1992 in both Tests and ODIs. Although he started his career as a left arm spin bowler, he later transformed into a batting all-rounder.</string>
     <string name="about_user">Hii there I am 24 years old batsman played for my local team in rajnagar ghaziabad and dsjdsvbjbdsbjvjbsvdbjvdbj</string>
+    <string name="coach_plus">Coach (+)</string>
+    <string name="company_name">Passosync</string>
 </resources>

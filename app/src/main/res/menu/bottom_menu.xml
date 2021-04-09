@@ -7,30 +7,37 @@
     android:id="@+id/dashBoardFragment"
     android:title="DashBoard"
     android:icon="@drawable/ic_baseline_menu_book_24"
-
-
-
     />
 
     <item
         android:id="@+id/lectureListFragment"
-        android:title="Lectures"
-        android:icon="@drawable/folder"
+        android:title="Activities"
+        android:icon="@drawable/lecturebottom"
         />
+<!--    <item-->
+<!--        android:id="@+id/newPostFragment"-->
+<!--        android:title="New Post"-->
+<!--        android:icon="@drawable/ic_baseline_add_circle_24"-->
+<!--        />-->
+<!--    <item-->
+<!--        android:id="@+id/draftFragment"-->
+<!--        android:title="Draft"-->
+<!--        android:icon="@drawable/ic_baseline_drafts_24"-->
+<!--        />-->
     <item
-        android:id="@+id/newPostFragment"
-        android:title="New Post"
-        android:icon="@drawable/ic_baseline_add_circle_24"
-        />
-    <item
-        android:id="@+id/draftFragment"
-        android:title="Draft"
-        android:icon="@drawable/ic_baseline_drafts_24"
+        android:id="@+id/placeholder"
+        android:title=""
         />
 
     <item
         android:id="@+id/subscribersFragment2"
         android:title="Subscribers"
-        android:icon="@drawable/subscribers"
+        android:icon="@drawable/subscribernew"
         />
+    <item
+        android:id="@+id/coachPlusFragment"
+        android:title="Coach (+)"
+        android:icon="@drawable/coachplusnew"
+        />
+
 </menu>

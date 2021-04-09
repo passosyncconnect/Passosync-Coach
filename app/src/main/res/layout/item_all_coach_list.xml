@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rotation="0">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_images_coach"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+android:src="@drawable/img_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/verfiy_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/connectedLinear"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_images_coach">
+
+            <TextView
+                android:id="@+id/tvVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:drawableStart="@drawable/verified"
+                android:gravity="center"
+                android:text="Verified"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="53dp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/coach_list_tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/avenir"
+            android:gravity="start"
+            android:padding="2dp"
+            android:text="Pasosync Analytics"
+            android:textColor="#4C4B4B"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/coach_list_tv_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="129dp" />
+
+        <TextView
+            android:id="@+id/coach_list_tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/avenir"
+            android:gravity="start"
+            android:maxLines="4"
+            android:padding="2dp"
+            android:text=""
+
+            android:textColor="#605E5E"
+            android:textSize="14sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/coach_list_tv_name" />
+
+
+        <TextView
+            android:id="@+id/tv_level_coach_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:drawableStart="@drawable/ic_baseline_security_24"
+
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text=" Level-3"
+            android:textAlignment="center"
+            android:textColor="#4C4B4B"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_speciality_coach_list"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/coach_list_tv_description" />
+
+        <TextView
+            android:id="@+id/tv_speciality_coach_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:drawableStart="@drawable/fieldsmall"
+
+
+            android:fontFamily="@font/avenir"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Fielding"
+            android:textAlignment="center"
+            android:textColor="#4C4B4B"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_level_coach_list" />
+
+
+        <LinearLayout
+            android:id="@+id/linear_coach_counter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_speciality_coach_list">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/follower"
+                    android:fontFamily="@font/avenir"
+                    android:gravity="center"
+                    android:text="Followers: "
+                    android:textColor="#B7000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_follower_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="#C16100"
+                    android:textSize="14sp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/subs"
+                    android:fontFamily="@font/avenir"
+                    android:gravity="center"
+                    android:text="Subscribers: "
+                    android:textColor="#B7000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subscriber_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="#C16100"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvConnected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/button_background"
+            android:padding="4dp"
+            android:text="Connected"
+            android:textColor="@color/dark_orange"
+            android:textSize="8sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_coach_counter" />
+
+        <LinearLayout
+            android:id="@+id/experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_level_coach_list">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:text="Experience: "
+                android:textColor="#B7000000"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/list_coach_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:text="02 yrs"
+                android:textColor="#B7000000"
+                android:textSize="12sp"
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/connectedLinear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:text="Connections: "
+                android:textColor="#B7000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/list_coach_connected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/dark_orange"
+                android:textSize="14sp"
+
+                />
+
+
+        </LinearLayout>
+
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <!--            android:id="@+id/buttonFollow"-->
+        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Follow"-->
+        <!--            android:layout_marginTop="4dp"-->
+        <!--            android:layout_marginEnd="4dp"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:textColor="@color/dark_orange"-->
+        <!--            app:icon="@drawable/subs"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/linear_coach_counter"-->
+
+        <!--            app:strokeColor="@color/dark_orange"-->
+        <!--            app:strokeWidth="2dp" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

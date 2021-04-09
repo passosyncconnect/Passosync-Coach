@@ -4,9 +4,11 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryDark">#BD7303</item>
+        <item name="colorPrimaryDark">#2C2C2B</item>
         <item name="colorAccent">@color/orange</item>
     </style>
+
+
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
         <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
@@ -17,6 +19,18 @@
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/dark_orange</item>
+    </style>
+    <style name="ToolbarTheme" parent="Widget.AppCompat.Toolbar">
+
+        <item name="colorPrimary">#fff</item>
+        <item name="colorPrimaryDark">#FF0000</item>
+
+
+    </style>
+    <style name="Textview" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">20sp</item>
+
     </style>
 
 </resources>

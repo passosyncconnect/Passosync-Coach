@@ -12,268 +12,608 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/profile_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:padding="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/profileConstraint"
-            tools:layout_editor_absoluteY="510dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/circular_profile"
-                    android:layout_width="150dp"
-                    android:layout_height="125dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:id="@+id/profile_pic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="start"
+                    android:layout_margin="8dp"
+                    android:padding="2dp"
                     android:scaleType="centerCrop"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#807F7F"
-                    android:src="@drawable/ic_baseline_person_24"
-                    app:layout_constraintBottom_toTopOf="@+id/tvProfileName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
+                    android:src="@drawable/man"
+
+                    app:layout_constraintBottom_toTopOf="@id/aboutUser"
+                    app:layout_constraintEnd_toStartOf="@+id/profileGuidline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!--                    <Button-->
+                <!--                        android:id="@+id/upload_photo"-->
+                <!--                        android:layout_width="175dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="start"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Upload pic"-->
+                <!--                        android:textAllCaps="false"-->
+                <!--                        android:textColor="#fff"-->
+                <!--                        android:textSize="18sp"-->
+                <!--                        android:visibility="gone"-->
+
+                <!--                        />-->
+
+
                 <TextView
-                    android:id="@+id/tvProfileName"
+                    android:id="@+id/profile_tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pasosync Analytics"
-                    android:textColor="#3E3D3D"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/avenir"
+                    android:gravity="start"
+                    android:text="Name"
+                    android:textColor="#4C4C4C"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/circular_profile" />
+                    app:layout_constraintBottom_toTopOf="@id/linearProfileAbout"
+                    app:layout_constraintStart_toEndOf="@id/profileGuidline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/profile_tv_email"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_margin="1dp"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:paddingBottom="4dp"-->
+                <!--                        android:text="shubham@gmail.com"-->
+
+                <!--                        android:textColor="#535C68"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:visibility="gone" />-->
+
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/linearProfileAbout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_margin="4dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@id/tvProfileEmail"
-                    >
-                    <LinearLayout
-                        android:id="@+id/experience"
+                    app:layout_constraintStart_toEndOf="@+id/profileGuidline"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_name">
+
+                    <TextView
+                        android:id="@+id/profile_tv_kind"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="4dp"
+                        android:drawableStart="@drawable/name"
+                        android:fontFamily="@font/avenir"
                         android:gravity="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        android:text="My Speciality"
+                        android:textColor="#5E5D5D"
+                        android:textSize="12sp" />
 
-                       >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:text="Experience:"
-                            android:textColor="#B7000000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/coach_experience"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="02 yrs"
-                            android:textColor="@color/dark_orange"
-                            android:textSize="16sp"
-
-                            />
-
-
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/speciality"
+                    <TextView
+                        android:id="@+id/profile_tv_level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="4dp"
+                        android:drawableStart="@drawable/securitysmall"
+                        android:fontFamily="@font/avenir"
                         android:gravity="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        android:text="My Level"
+                        android:textColor="#5E5D5D"
+                        android:textSize="12sp" />
 
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:text="Speciality:"
-                            android:textColor="#B7000000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tv_coach_speciality"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="02 yrs"
-                            android:textColor="@color/dark_orange"
-                            android:textSize="16sp"
-
-                            />
-
-
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
+
                 <TextView
-                    android:id="@+id/tvProfileEmail"
+                    android:id="@+id/profile_tv_experience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="8dp"
-                    android:text="pasosyn@pasosync.com"
-                    android:textColor="#4C4B4B"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/age44"
+                    android:gravity="center"
+                    android:text="My age"
+                    android:textColor="#5E5D5D"
                     android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/aboutUser"
+                    app:layout_constraintStart_toEndOf="@id/profileGuidline"
+                    app:layout_constraintTop_toBottomOf="@id/linearProfileAbout" />
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProfileMobile"></TextView>
-
-                <TextView
-                    android:id="@+id/tvProfileMobile"
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/profileGuidline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text="9871966405"
-                    android:textColor="#4C4B4B"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@id/tvProfileEmail"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/infoCardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:padding="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:cardPreventCornerOverlap="false"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardView">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/textview3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_marginBottom="2dp"
-                    android:text="About me"
-                    android:textStyle="bold"
-                    android:textColor="#4C4B4B"
-                    android:textSize="22sp"
-                    app:layout_constraintBottom_toTopOf="@+id/tvAboutProfile"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="120dp" />
 
                 <com.borjabravo.readmoretextview.ReadMoreTextView
-                    android:id="@+id/tvAboutProfile"
+                    android:id="@+id/aboutUser"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:textSize="12sp"
+                    app:colorClickableText="@color/dark_orange"
+                    app:layout_constraintBottom_toTopOf="@id/profile_tv_EditProfileText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_experience"
+                    app:trimCollapsedText="read less"
+                    app:trimExpandedText="read more"
+                    app:trimLength="150"
+                    app:trimMode="trimModeLength"
+
+                    />
+
+                <TextView
+                    android:id="@+id/profile_tv_EditProfileText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:padding="4dp"
-                    android:text="@string/about_profile"
-                    android:textAlignment="textStart"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/edit"
+                    android:drawableEnd="@drawable/arrow"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/avenir"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text=" Edit Profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/profile_tv_Earnings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aboutUser" />
 
-                    android:textColor="#7B8788"
-                    android:textSize="16sp"
-                    app:colorClickableText="@color/dark_orange"
+
+                <View
+                    android:id="@+id/viewSpecial"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginEnd="8dp"
+                    android:background="#D3CECE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_EditProfileText" />
+
+                <TextView
+                    android:id="@+id/profile_tv_Earnings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/money"
+                    android:drawableEnd="@drawable/arrow"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/avenir"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text=" Earnings"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_EditProfileText" />
+
+                <View
+                    android:id="@+id/viewLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginEnd="8dp"
+                    android:background="#D3CECE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_Earnings" />
+
+                <TextView
+                    android:id="@+id/profile_tv_Level_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/securitysmall"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/avenir"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text=" Edit your level"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/arrow"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_Earnings" />
+
+                <View
+                    android:id="@+id/viewSpeciality"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginEnd="8dp"
+                    android:background="#D3CECE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_tv_Level_update" />
+
+                <TextView
+                    android:id="@+id/profile_tv_speciality_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/securitysmall"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/avenir"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text=" Edit your Speciality"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/arrow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textview3"
-                    app:trimCollapsedText="read less"
-                    app:trimExpandedText="read more"
-                    app:trimLength="120"
-                    app:trimMode="trimModeLength" />
+                    app:layout_constraintTop_toBottomOf="@id/viewSpeciality" />
+
+
+                <!--                <View-->
+                <!--                    android:id="@+id/viewlevel"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_marginStart="8dp"-->
+
+                <!--                    android:layout_marginEnd="8dp"-->
+                <!--                    android:background="#D3CECE"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/profile_tv_Earnings" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/profile_tv_EditProfileLevel"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="4dp"-->
+                <!--                    android:layout_marginTop="8dp"-->
+                <!--                    android:layout_marginBottom="16dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:drawableStart="@drawable/securitysmall"-->
+                <!--                    android:drawableEnd="@drawable/arrow"-->
+                <!--                    android:fontFamily="@font/avenir"-->
+                <!--                    android:foreground="?android:attr/selectableItemBackground"-->
+                <!--                    android:gravity="start"-->
+                <!--                    android:padding="8dp"-->
+                <!--                    android:text="Edit your level"-->
+                <!--                    android:textAllCaps="false"-->
+                <!--                    android:textColor="@color/dark_orange"-->
+                <!--                    android:textSize="18sp"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/profile_tv_Earnings" />-->
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <com.manojbhadane.QButton
-            android:id="@+id/bt_earnings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/orange"
-            android:text="Earnings"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/videoCardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/infoCardView"
-            app:qb_radius="100"
-            app:qb_strokeColor="#fff"
-            app:qb_strokeWidth="5" />
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:id="@+id/cardView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:padding="8dp"-->
+
+        <!--            app:cardElevation="4dp"-->
+        <!--            app:cardPreventCornerOverlap="false"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/profileConstraint"-->
+        <!--            tools:layout_editor_absoluteY="510dp">-->
+
+        <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.5"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+        <!--                    android:id="@+id/circular_profile"-->
+        <!--                    android:layout_width="70dp"-->
+        <!--                    android:layout_height="70dp"-->
+
+        <!--                    android:layout_marginTop="2dp"-->
+
+        <!--                    android:layout_marginBottom="6dp"-->
+        <!--                    android:scaleType="centerCrop"-->
+        <!--                    android:src="@drawable/ic_baseline_person_24"-->
+
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toStartOf="@id/guideline4"-->
+
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/tvProfileName"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="4dp"-->
+        <!--                    android:layout_marginTop="4dp"-->
+        <!--                    android:text="Pasosync Analytics"-->
+        <!--                    android:fontFamily="@font/avenir"-->
+        <!--                    android:textColor="#3E3D3D"-->
+        <!--                    android:textSize="20sp"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    app:layout_constraintHorizontal_bias="0.498"-->
+        <!--                    app:layout_constraintStart_toEndOf="@id/guideline4"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="0dp"-->
+        <!--                    android:layout_height="wrap_content"-->
+
+        <!--                    android:layout_marginStart="4dp"-->
+
+
+        <!--                    app:layout_constraintStart_toEndOf="@id/guideline4"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@id/tvProfileEmail">-->
+
+        <!--                    <LinearLayout-->
+        <!--                        android:id="@+id/experience"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="2dp"-->
+
+        <!--                        android:layout_marginBottom="4dp"-->
+
+
+        <!--                        >-->
+
+        <!--                        <TextView-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+
+
+        <!--                            android:text="Experience:"-->
+        <!--                            android:textColor="#B7000000"-->
+        <!--                            android:textSize="12sp"-->
+        <!--                            android:textStyle="bold" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/coach_experience"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="match_parent"-->
+        <!--                            android:fontFamily="@font/avenir"-->
+        <!--                            android:text="02 yrs"-->
+        <!--                            android:textColor="@color/dark_orange"-->
+        <!--                            android:textSize="12sp"-->
+
+        <!--                            />-->
+
+
+        <!--                    </LinearLayout>-->
+
+        <!--                    <LinearLayout-->
+        <!--                        android:id="@+id/speciality"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+
+        <!--                        android:layout_marginTop="2dp"-->
+        <!--                        android:layout_marginBottom="4dp">-->
+
+        <!--                        <TextView-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_marginStart="4dp"-->
+
+        <!--                            android:text="Speciality:"-->
+        <!--                            android:textColor="#B7000000"-->
+        <!--                            android:textSize="12sp"-->
+        <!--                            android:textStyle="bold" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/tv_coach_speciality"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:fontFamily="@font/avenir"-->
+        <!--                            android:text="02 yrs"-->
+        <!--                            android:textColor="@color/dark_orange"-->
+        <!--                            android:textSize="12sp"-->
+
+        <!--                            />-->
+
+
+        <!--                    </LinearLayout>-->
+
+        <!--                </LinearLayout>-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/tvProfileEmail"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="4dp"-->
+        <!--                    android:drawableStart="@drawable/emailsmall"-->
+        <!--                    android:text="pasosyn@pasosync.com"-->
+        <!--                    android:textColor="#4C4B4B"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    android:fontFamily="@font/avenir"-->
+        <!--                    app:layout_constraintStart_toEndOf="@id/guideline4"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@+id/tvProfileMobile"></TextView>-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/tvProfileMobile"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="4dp"-->
+        <!--                    android:drawableStart="@drawable/phone"-->
+        <!--                    android:text="9871966405"-->
+        <!--                    android:textColor="#4C4B4B"-->
+        <!--                    android:textSize="14sp"-->
+        <!--                    android:fontFamily="@font/avenir"-->
+        <!--                    app:layout_constraintBottom_toTopOf="@id/tvProfileEmail"-->
+
+        <!--                    app:layout_constraintHorizontal_bias="0.498"-->
+        <!--                    app:layout_constraintStart_toEndOf="@id/guideline4"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@id/tvProfileName" />-->
+
+        <!--                <androidx.constraintlayout.widget.Guideline-->
+        <!--                    android:id="@+id/guideline4"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    app:layout_constraintGuide_begin="108dp" />-->
+
+        <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
+
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:id="@+id/infoCardView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:padding="8dp"-->
+
+        <!--            app:cardElevation="4dp"-->
+        <!--            app:cardPreventCornerOverlap="false"-->
+
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/cardView">-->
+
+        <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintHorizontal_bias="0.5"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textview3"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="4dp"-->
+        <!--                    android:layout_marginBottom="2dp"-->
+        <!--                    android:text="About me"-->
+        <!--                    android:textColor="#4C4B4B"-->
+        <!--                    android:textSize="20sp"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    app:layout_constraintBottom_toTopOf="@+id/tvAboutProfile"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--                <com.borjabravo.readmoretextview.ReadMoreTextView-->
+        <!--                    android:id="@+id/tvAboutProfile"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_margin="4dp"-->
+        <!--                    android:padding="4dp"-->
+        <!--                    android:text="@string/about_profile"-->
+        <!--                    android:fontFamily="@font/avenir"-->
+        <!--                    android:textAlignment="textStart"-->
+        <!--                    android:textColor="#7B8788"-->
+        <!--                    android:textSize="16sp"-->
+        <!--                    app:colorClickableText="@color/dark_orange"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toBottomOf="@+id/textview3"-->
+        <!--                    app:trimCollapsedText="read less"-->
+        <!--                    app:trimExpandedText="read more"-->
+        <!--                    app:trimLength="120"-->
+        <!--                    app:trimMode="trimModeLength" />-->
+        <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
+        <!--        <com.manojbhadane.QButton-->
+        <!--            android:id="@+id/bt_earnings"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="8dp"-->
+        <!--            android:background="@color/orange"-->
+        <!--            android:text="Earnings"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:textColor="#fff"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintBottom_toTopOf="@id/videoCardView"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/infoCardView"-->
+        <!--            app:qb_radius="100"-->
+        <!--            app:qb_strokeColor="#fff"-->
+        <!--            app:qb_strokeWidth="5" />-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/videoCardView"
             android:layout_width="395dp"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:background="#c1c1c1"
-            android:padding="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
+            android:layout_marginTop="4dp"
+            android:background="#F1F1F1"
+
             app:cardPreventCornerOverlap="false"
-            app:layout_constraintBottom_toBottomOf="@id/profileConstraint"
+
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/infoCardView">
+            app:layout_constraintTop_toBottomOf="@id/profile_cardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/videoconstraint"
@@ -284,55 +624,60 @@
                     android:id="@+id/videoframe"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    app:layout_constraintBottom_toTopOf="@id/bt_profileUpload"
+                    android:layout_margin="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <VideoView
+                    <com.potyvideo.library.AndExoPlayerView
                         android:id="@+id/profileVideoView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:visibility="gone"/>
+                        android:background="#353535"
+                        android:visibility="visible"
+                        app:andexo_aspect_ratio="aspect_16_9"
+                        app:andexo_play_when_ready="true"
+                        app:andexo_resize_mode="Fit"
+
+                        app:andexo_show_controller="true" />
 
                 </FrameLayout>
 
-                <Button
-                    android:id="@+id/bt_profileUpload"
+                <!--                <com.google.android.material.button.MaterialButton-->
+                <!--                    android:id="@+id/bt_profileUpload"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="8dp"-->
+                <!--                    app:strokeColor="@color/dark_orange"-->
+                <!--                    app:strokeWidth="2dp"-->
+                <!--                    android:text="Update Profile"-->
+                <!--                    android:textAllCaps="false"-->
+                <!--                    android:textColor="@color/dark_orange"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    app:layout_constraintBottom_toTopOf="@id/bt_logout"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/videoframe" />-->
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_logout"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/button_background"
-                    android:text="Update Profile"
+                    android:outlineSpotShadowColor="@color/dark_orange"
+                    android:text="Log Out"
                     android:textAllCaps="false"
                     android:textColor="@color/dark_orange"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/bt_logout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/videoframe"
-                     />
-
-                <com.manojbhadane.QButton
-                    android:id="@+id/bt_logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/orange"
-                    android:text="Log Out"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@id/videoconstraint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/bt_profileUpload"
-                    app:qb_radius="100"
-                    app:qb_strokeColor="#fff"
-                    app:qb_strokeWidth="5" />
-
+                    app:layout_constraintTop_toBottomOf="@id/videoframe"
+                    app:strokeColor="@color/dark_orange"
+                    app:strokeWidth="2dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

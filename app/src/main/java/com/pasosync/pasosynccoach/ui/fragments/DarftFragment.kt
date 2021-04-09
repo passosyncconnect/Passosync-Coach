@@ -16,21 +16,18 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pasosync.pasosynccoach.R
-import com.pasosync.pasosynccoach.adapters.DraftAdapter
 import com.pasosync.pasosynccoach.adapters.DraftLectureAdapter
 import com.pasosync.pasosynccoach.data.DraftLectureDetails
-import com.pasosync.pasosynccoach.data.NewLectureDetails
 import com.pasosync.pasosynccoach.databinding.FargmentDraftBinding
 import com.pasosync.pasosynccoach.ui.MainActivity
+import com.pasosync.pasosynccoach.ui.dialogs.DeletePostDialog
 import com.pasosync.pasosynccoach.ui.viewmodels.MainViewModels
-import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
  * A simple [Fragment] subclass.
  */
 
-private const val TAG = "DarftFragment"
 
 class DarftFragment : Fragment(R.layout.fargment_draft) {
     lateinit var viewModel: MainViewModels
@@ -40,7 +37,7 @@ class DarftFragment : Fragment(R.layout.fargment_draft) {
     private val user = FirebaseAuth.getInstance().currentUser
     private val db = FirebaseFirestore.getInstance()
     private val draftCollectionRef = db.collection("CoachLectureList")
-        .document(user?.email.toString()).collection("DraftLecture")
+        .document(user?.uid!!).collection("DraftLecture")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,12 +77,21 @@ class DarftFragment : Fragment(R.layout.fargment_draft) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding= FargmentDraftBinding.bind(view)
+        binding = FargmentDraftBinding.bind(view)
         viewModel = (activity as MainActivity).viewmodel
 
         (activity as AppCompatActivity).supportActionBar?.title = " "
-        Log.d(TAG, "onViewCreated: ")
+
         setupDraftRecyclerview()
+        draftLectureAdapter.setOnItemClickListener {
+            DeletePostDialog().apply {
+                setPositiveListener {
+                    it.id?.let { it1 -> draftCollectionRef.document(it1).delete().addOnSuccessListener {
+                   //      Toast.makeText(requireContext(),"Successfully Deleted",Toast.LENGTH_SHORT).show()
+                    } }
+                }
+            }.show(childFragmentManager,null)
+        }
 
 
         //  retrieveLectureDetails()

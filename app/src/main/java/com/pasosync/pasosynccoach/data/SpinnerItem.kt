@@ -10,7 +10,7 @@ data class SpinnerItem(
 object Types {
 
     private val images = intArrayOf(
-        R.drawable.bat,
+        R.drawable.bat25,
         R.drawable.ic_baseline_sports_baseball_24,
         R.drawable.field,
         R.drawable.captain,

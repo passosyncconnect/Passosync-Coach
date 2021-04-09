@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_lectureListFragment_to_helpFragment3"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_lectureListFragment_self"
+            app:destination="@id/lectureListFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPostFragment"
@@ -155,6 +158,21 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_newPostFragment2"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_allCoachListFragment"
+            app:destination="@id/allCoachListFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_subscribersFragment2"
+            app:destination="@id/subscribersFragment2" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_academyMembersListFragment"
+            app:destination="@id/academyMembersListFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_academyMembersListFragment2"
+            app:destination="@id/academyMembersListFragment" />
     </fragment>
     <fragment
         android:id="@+id/subscribersFragment2"
@@ -185,17 +203,6 @@
         <argument
             android:name="lecture"
             app:argType="com.pasosync.pasosynccoach.data.NewLectureDetails" />
-        <action
-            android:id="@+id/action_lectureContent_to_pdfFragment"
-            app:destination="@id/pdfFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/pdfFragment"
-        android:name="com.pasosync.pasosynccoach.ui.fragments.PdfFragment"
-        android:label="PdfFragment" >
-        <action
-            android:id="@+id/action_pdfFragment_to_lectureContent"
-            app:destination="@id/lectureContent" />
     </fragment>
     <fragment
         android:id="@+id/freeSubscribersFragment"
@@ -221,4 +228,186 @@
             android:name="article"
             app:argType="com.pasosync.pasosynccoach.models.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/coachPlusFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.CoachPlusFragment"
+        android:label="fragment_coach_plus"
+        tools:layout="@layout/fragment_coach_plus" >
+        <action
+            android:id="@+id/action_coachPlusFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_coachPlusFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_coachPlusFragment_to_controlFragment2"
+            app:destination="@id/controlFragment2" />
+        <action
+            android:id="@+id/action_coachPlusFragment_to_purchaseCoachPlusFragment2"
+            app:destination="@id/purchaseCoachPlusFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPostUploadFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.NewPostUploadFragment"
+        android:label="NewPostUploadFragment" >
+        <action
+            android:id="@+id/action_newPostUploadFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <action android:id="@+id/globalActionToCommentDialog"
+        app:destination="@id/commentDialog" />
+    <action android:id="@+id/globalActionToOthersProfileFragment"
+        app:destination="@id/coachDescriptionFragment" />
+    <action android:id="@+id/globalLiked"
+        app:destination="@id/likedDialog"
+        />
+
+    <fragment
+        android:id="@+id/allCoachListFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.AllCoachListFragment"
+        android:label="AllCoachListFragment" >
+        <action
+            android:id="@+id/action_allCoachListFragment_to_coachDescriptionFragment"
+            app:destination="@id/coachDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coachDescriptionFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.CoachDescriptionFragment"
+        android:label="CoachDescriptionFragment" >
+        <argument
+            android:name="coach"
+            app:argType="com.pasosync.pasosynccoach.data.UserDetails" />
+    </fragment>
+    <dialog
+        android:id="@+id/commentDialog"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.CommentDialog"
+        android:label="CommentDialog" >
+        <argument
+            android:name="postId"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/likedDialog"
+        android:name="com.pasosync.pasosynccoach.ui.dialogs.LikedDialog"
+        android:label="LikedDialog" >
+        <argument
+            android:name="id"
+            app:argType="com.pasosync.pasosynccoach.data.Post" />
+    </dialog>
+    <fragment
+        android:id="@+id/academyMembersListFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.AcademyMembersListFragment"
+        android:label="AcademyMembersListFragment" >
+        <argument
+            android:name="academy"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_academyMembersListFragment_to_userVideoAndScoreChooserFragment"
+            app:destination="@id/userVideoAndScoreChooserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userVideoAndScoreChooserFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UserVideoAndScoreChooserFragment"
+        android:label="UserVideoAndScoreChooserFragment" >
+        <argument
+            android:name="users"
+            app:argType="com.pasosync.pasosynccoach.data.UserDetails" />
+        <action
+            android:id="@+id/action_userVideoAndScoreChooserFragment_to_userPracticeVideoFragment"
+            app:destination="@id/userPracticeVideoFragment" />
+        <action
+            android:id="@+id/action_userVideoAndScoreChooserFragment_to_userPracticeScoreFragment"
+            app:destination="@id/userPracticeScoreFragment" />
+        <action
+            android:id="@+id/action_userVideoAndScoreChooserFragment_to_usersScoreFragment"
+            app:destination="@id/usersScoreFragment" />
+        <action
+            android:id="@+id/action_userVideoAndScoreChooserFragment_to_usersVideoFragment"
+            app:destination="@id/usersVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPracticeScoreFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UserPracticeScoreFragment"
+        android:label="UserPracticeScoreFragment" >
+        <argument
+            android:name="practicescore"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userPracticeScoreFragment_to_scoreCardDetails"
+            app:destination="@id/scoreCardDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPracticeVideoFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UserPracticeVideoFragment"
+        android:label="UserPracticeVideoFragment" >
+        <argument
+            android:name="practice"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userPracticeVideoFragment_to_practiceVideoProgressDetails"
+            app:destination="@id/practiceVideoProgressDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersScoreFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UsersScoreFragment"
+        android:label="UsersScoreFragment" >
+        <argument
+            android:name="score"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_usersScoreFragment_to_scoreCardDetails"
+            app:destination="@id/scoreCardDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersVideoFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.UsersVideoFragment"
+        android:label="UsersVideoFragment" >
+        <argument
+            android:name="video"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_usersVideoFragment_to_videoProgressDetails"
+            app:destination="@id/videoProgressDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreCardDetails"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.ScoreCardDetails"
+        android:label="ScoreCardDetails" >
+        <argument
+            android:name="game"
+            app:argType="com.pasosync.pasosynccoach.data.GameScoreDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoProgressDetails"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.VideoProgressDetailsUsers"
+        android:label="VideoProgressDetails" >
+        <argument
+            android:name="videos"
+            app:argType="com.pasosync.pasosynccoach.data.VideoProgressData" />
+    </fragment>
+    <fragment
+        android:id="@+id/practiceVideoProgressDetails"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.PracticeVideoProgressDetails"
+        android:label="PracticeVideoProgressDetails" >
+        <argument
+            android:name="video"
+            app:argType="com.pasosync.pasosynccoach.data.PracticeVideoProgressData" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseCoachPlusFragment2"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.PurchaseCoachPlusFragment"
+        android:label="PurchaseCoachPlusFragment" >
+        <action
+            android:id="@+id/action_purchaseCoachPlusFragment2_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.pasosync.pasosynccoach.ui.fragments.PaymentFragment"
+        android:label="PaymentFragment" >
+        <argument
+            android:name="price"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

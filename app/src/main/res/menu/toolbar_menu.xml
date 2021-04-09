@@ -5,15 +5,20 @@
     android:id="@+id/helpFragment"
     android:title="Help"
     android:icon="@drawable/ic_baseline_headset_mic_24"
-    app:showAsAction="always"/>
+    app:showAsAction="never"/>
     <item
         android:id="@+id/notificationFragment"
         android:title="Notification"
         android:icon="@drawable/ic_baseline_notifications_24"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
     <item
         android:id="@+id/controlFragment2"
-        android:title="Control"
+        android:title="Profile"
         android:icon="@drawable/control"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/logout_coach"
+        android:title="Logout"
+        android:icon="@drawable/control"
+        app:showAsAction="never"/>
 </menu>

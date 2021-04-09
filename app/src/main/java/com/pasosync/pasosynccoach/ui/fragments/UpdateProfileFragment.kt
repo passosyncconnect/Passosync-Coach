@@ -52,14 +52,11 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 
-/**
- * A simple [Fragment] subclass.
- */
-
-class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), AdapterView.OnItemSelectedListener {
+class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile),
+    AdapterView.OnItemSelectedListener {
     private lateinit var binding: FargmentUpdateprofileBinding
 
-    private val TAG: String = "UpdateProfile"
+
     lateinit var viewModel: MainViewModels
     private var userEmail: String = "e"
     lateinit var mediaController: MediaController
@@ -67,7 +64,7 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
     private val db = FirebaseFirestore.getInstance()
     var spinnerText = ""
     private val coachDetailsCollectionRef =
-        db.collection("CoachDetails").document(user?.email.toString())
+        db.collection("UserDetails").document(user?.uid!!)
 
 
     val UserIntro = Firebase.storage.reference.child("userIntroData")
@@ -86,8 +83,8 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
         setHasOptionsMenu(true)
         val user = FirebaseAuth.getInstance().currentUser
         user.let {
-            userEmail = user?.email.toString()
-            Log.d(TAG, "onCreateView: $userEmail")
+            userEmail = user?.uid!!
+
         }
         return v
     }
@@ -95,28 +92,28 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
     private fun setUpCustomSpinner() {
         val adapter = SpinnerCoachAdapter(requireContext(), TypesCoach.list!!)
 
-        binding.spinnerUpdateProfile.adapter=adapter
+        binding.spinnerUpdateProfile.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding= FargmentUpdateprofileBinding.bind(view)
+        binding = FargmentUpdateprofileBinding.bind(view)
         (toolbar as Toolbar?)?.setTitleTextColor(Color.WHITE)
         viewModel = (activity as MainActivity).viewmodel
 
         (activity as AppCompatActivity).supportActionBar?.title = " "
-        binding.updateChooseBtn.setOnClickListener {
-            if (userPicUri == null) {
-                Toast.makeText(requireContext(), "Please Select an Image", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                dialog.show()
-                uploadImageToStorage()
-            }
-
-        }
+//        binding.updateChooseBtn.setOnClickListener {
+//            if (userPicUri == null) {
+//                Toast.makeText(requireContext(), "Please Select an Image", Toast.LENGTH_SHORT)
+//                    .show()
+//            } else {
+//                dialog.show()
+//                uploadImageToStorage()
+//            }
+//
+//        }
         binding.updateEmail.isEnabled = false
-
+        binding.updateMobile.isEnabled = false
         setUpCustomSpinner()
         binding.spinnerUpdateProfile.onItemSelectedListener = this
 
@@ -152,46 +149,40 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
         }
 
 
-        binding.updateProfile.setOnClickListener {
-            if (confirmInput() or Permissions.hasWritingPermissions(requireContext())) {
-                dialog.show()
-//                uploadImageToStorage()
-                uploadDataToFirestor()
 
 
-            } else {
-                Toast.makeText(requireContext(), "fill all details", Toast.LENGTH_SHORT).show()
-            }
+//        binding.updateProfilePic.setOnClickListener {
+//            picImageFromGallery()
+//        }
 
 
-            //updateCoachDetails(getOldCoachDetails(),newCoachMap)
-
-
-        }
-
-        binding.updateProfilePic.setOnClickListener {
-            picImageFromGallery()
-        }
-
-
-
-        binding.updateVideo.setOnClickListener {
-            if (userVideoUri == null) {
-                Toast.makeText(requireContext(), "Please Select a video", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                dialog.show()
-                uploadVideoToStorage()
-            }
-
-
-        }
+//        binding.updateVideo.setOnClickListener {
+//            if (userVideoUri == null) {
+//                Toast.makeText(requireContext(), "Please Select a video", Toast.LENGTH_SHORT)
+//                    .show()
+//            } else {
+//                dialog.show()
+//                uploadVideoToStorage()
+//            }
+//
+//
+//        }
 
         builder = AlertDialog.Builder(requireContext())
         builder.setCancelable(false) // if you want user to wait for some process to finish,
 
         builder.setView(R.layout.layout_uploading_dialog)
         dialog = builder.create()
+
+        binding.updateProfile.setOnClickListener {
+            if (confirmInput()){
+                Toast.makeText(requireContext(), "fill all details", Toast.LENGTH_SHORT).show()
+            } else {
+                uploadDataToFirestor()
+            }
+
+
+        }
 
     }
 
@@ -256,12 +247,20 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
         }
     }
 
+//    private fun confirmInput(): Boolean {
+//        if (!validateEmail() or !validateName() or
+//            !validateMobile() or !validateAbout() or !validateExperience()) {
+//            return false
+//        }
+//        return true
+//
+//    }
+
     private fun confirmInput(): Boolean {
-        if (!validateEmail() or !validateName() or !validateMobile() or !validateAbout() or !validateExperience()) {
-            return false
+        if (!validateName() or !validateAbout() or !validateExperience()) {
+            return true
         }
-        return true
-        dialog.show()
+        return false
     }
 
 
@@ -291,8 +290,8 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
                 }.addOnSuccessListener { taskSnapshot ->
                     videoFileName.downloadUrl.addOnSuccessListener {
                         videourl = it.toString()
-                        Log.d(TAG, "uploadVideoToStorage: $videourl")
-                        coachDetailsCollectionRef.update("coachIntroVideoUri", videourl)
+
+                        coachDetailsCollectionRef.update("introVideoUri", videourl)
                     }
                 }.await()
 
@@ -330,8 +329,8 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
                     handler.postDelayed({ binding.updateProgressBar.setProgress(0) }, 500)
                     filename.downloadUrl.addOnSuccessListener {
                         picurl = it.toString()
-                        Log.d(TAG, "uploadImageToStorage: ${it.toString()}")
-                        coachDetailsCollectionRef.update("coachProfilePicUri", picurl)
+
+                        coachDetailsCollectionRef.update("userPicUri", picurl)
 
                     }
 
@@ -361,15 +360,15 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
         startActivityForResult(intent, PICK_VIDEO)
     }
 
-    private fun uploadTypeToFirestore()=CoroutineScope(Dispatchers.Main).launch {
-        try{
-            var coachType=spinnerText
-            coachDetailsCollectionRef.update("coachType",coachType)
-             Toast.makeText(requireContext(),"Changed Successfully",Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
+    private fun uploadTypeToFirestore() = CoroutineScope(Dispatchers.Main).launch {
+        try {
+            var coachType = spinnerText
+            coachDetailsCollectionRef.update("academy", coachType)
+            Toast.makeText(requireContext(), "Changed Successfully", Toast.LENGTH_SHORT).show()
+             dialog.dismiss()
 
-        }catch (e:Exception){
-             Toast.makeText(requireContext(),e.message,Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -381,24 +380,25 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
             var mobile = binding.updateMobile.text.toString()
             var about = binding.updateAbout.text.toString()
 
-            var experience=binding.updateExperience.text.toString()
+            var experience = binding.updateExperience.text.toString()
 //            var coachVideoUri = videourl.toString()
 //            var coachpicUri = picurl.toString()
 
 //            val coachDetails =
 //                CoachDetails(name, email, mobile, about, coachpicUri, coachVideoUri)
 
-            coachDetailsCollectionRef.update("coachName", name)
-            coachDetailsCollectionRef.update("coachEmail", email)
-            coachDetailsCollectionRef.update("coachMobile", mobile)
-            coachDetailsCollectionRef.update("coachAbout", about)
+            coachDetailsCollectionRef.update("userName", name)
+            coachDetailsCollectionRef.update("userEmail", email)
+            coachDetailsCollectionRef.update("userMobile", mobile)
+            coachDetailsCollectionRef.update("userAbout", about)
 
-            coachDetailsCollectionRef.update("coachExperience",experience)
+            coachDetailsCollectionRef.update("experience", experience)
 
 
 //            saveCoachDetails(coachDetails)
-            dialog.dismiss()
-            findNavController().navigate(R.id.action_updateProfileFragment2_to_profileFragment2)
+            //   dialog.dismiss()
+            Toast.makeText(requireContext(), "Updated Successfully", Toast.LENGTH_SHORT).show()
+            //   findNavController().navigate(R.id.action_updateProfileFragment2_to_profileFragment2)
 
 
         } catch (e: Exception) {
@@ -417,7 +417,7 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
 
                 }.addOnSuccessListener { taskSnapshot ->
                     videoFileName.downloadUrl.addOnSuccessListener {
-                        Log.d(TAG, "uploadVideo:${it.toString()} ")
+
                         videourl = it.toString()
                         var name = binding.updateName.text.toString()
                         var email = binding.updateEmail.text.toString()
@@ -453,7 +453,7 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_IMAGE_PICK) {
             data?.data?.let {
                 userPicUri = it
-                binding.updateProfilePic.setImageURI(it)
+                //  binding.updateProfilePic.setImageURI(it)
             }
         }
 
@@ -467,6 +467,7 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
                     Toast.LENGTH_SHORT
                 ).show()
                 // update_video_view.setVideoURI(userVideoUri)
+                uploadVideoToStorage()
             }
         }
     }
@@ -484,29 +485,29 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
             var profile_about: String? = null
             var profile_user_pic: String? = null
             var profile_user_video: String? = null
-            var experience_coach:String?=null
+            var experience_coach: String? = null
             val querySnapshot = coachDetailsCollectionRef.get().addOnSuccessListener { document ->
-                val about = document.getString("coachAbout")
-                val email = document.getString("coachEmail")
-                val mobile = document.getString("coachMobile")
-                val profileName = document.getString("coachName")
-                val profileUserPic = document.getString("coachProfilePicUri")
-                val profileVideo = document.getString("coachIntroVideoUri")
-                val experience=document.getString("coachExperience")
+                val about = document.getString("userAbout")
+                val email = document.getString("userEmail")
+                val mobile = document.getString("userMobile")
+                val profileName = document.getString("userName")
+                val profileUserPic = document.getString("userPicUri")
+                val profileVideo = document.getString("introVideoUri")
+                val experience = document.getString("experience")
                 profile_name = profileName
                 profile_about = about
                 profile_mobile = mobile
                 profile_email = user?.email
                 profile_user_pic = profileUserPic
                 profile_user_video = profileVideo
-                experience_coach=experience
+                experience_coach = experience
             }.await()
             withContext(Dispatchers.Main) {
                 binding.updateName.text = profile_name?.toEditable()
                 binding.updateEmail.text = profile_email?.toEditable()
                 binding.updateAbout.text = profile_about?.toEditable()
                 binding.updateMobile.text = profile_mobile?.toEditable()
-                binding.updateExperience.text=experience_coach?.toEditable()
+                binding.updateExperience.text = experience_coach?.toEditable()
                 // update_video_view.setVideoURI(profile_user_video?.toUri())
             }
         } catch (e: Exception) {
@@ -544,12 +545,11 @@ class UpdateProfileFragment : Fragment(R.layout.fargment_updateprofile), Adapter
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val clickedItem: SpinnerItemForCoachDetails = parent?.getItemAtPosition(position) as SpinnerItemForCoachDetails
-        val clickedCountryName: String =clickedItem.TypeName
+        val clickedItem: SpinnerItemForCoachDetails =
+            parent?.getItemAtPosition(position) as SpinnerItemForCoachDetails
+        val clickedCountryName: String = clickedItem.TypeName
 
         spinnerText = clickedCountryName
-        Log.d(TAG, "onItemSelected: ${spinnerText}")
-
 
 
     }

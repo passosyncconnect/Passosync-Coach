@@ -79,6 +79,9 @@ class LoginActivity : AppCompatActivity() {
 //                dialog.show()
                 //registerUser()
             }
+            else{
+                 Toast.makeText(this,"Make sure your email address is verified Or your input is correct ",Toast.LENGTH_LONG).show()
+            }
         }
         builder = AlertDialog.Builder(this)
         builder.setCancelable(false) // if you want user to wait for some process to finish,
@@ -130,6 +133,10 @@ class LoginActivity : AppCompatActivity() {
             true
         }
     }
+
+
+
+
     private fun confirmInput():Boolean {
         if (!validateEmail() or !validatePassword()) {
             return false

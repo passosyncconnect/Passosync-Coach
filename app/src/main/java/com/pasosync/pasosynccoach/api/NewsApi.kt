@@ -10,8 +10,6 @@ interface NewsApi {
     suspend fun getCricketNews(
     @Query("q")
     Query: String,
-    @Query("category")
-    category: String = "sports",
     @Query("apiKey")
     apiKey: String = API_KEY
 ):Response<NewsResponse>

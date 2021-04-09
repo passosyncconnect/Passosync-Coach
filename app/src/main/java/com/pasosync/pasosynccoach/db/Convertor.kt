@@ -1,4 +1,4 @@
-package com.bairwa.newsapp.database
+package com.pasosync.pasosynccoach.db
 
 import androidx.room.TypeConverter
 import com.pasosync.pasosynccoach.models.Source
